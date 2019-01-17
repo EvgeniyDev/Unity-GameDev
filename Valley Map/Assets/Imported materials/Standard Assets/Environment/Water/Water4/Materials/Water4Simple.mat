@@ -68,12 +68,12 @@ Material:
     m_Colors:
     - _AnimationDirection: {r: 2, g: 1, b: -1, a: 1}
     - _AnimationTiling: {r: 0.4, g: 0.39099997, b: 0.56, a: 0.7}
-    - _BaseColor: {r: 0.14079742, g: 0.21275365, b: 0.26415092, a: 0.7764706}
+    - _BaseColor: {r: 0.14079742, g: 0.21275365, b: 0.26415092, a: 0.92156863}
     - _BumpDirection: {r: 10, g: -30, b: 10, a: -20}
     - _BumpTiling: {r: 0.15, g: 0.15, b: 0.15, a: 0.15}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DepthColor: {r: 0.29811764, g: 0.36611718, b: 0.39552242, a: 0.34509805}
-    - _DistortParams: {r: 0, g: 0, b: 9, a: 0}
+    - _DistortParams: {r: 0, g: 0, b: 10, a: 0}
     - _Foam: {r: 0.3275862, g: 0.7471264, b: 0, a: 0}
     - _GAmplitude: {r: 0.3, g: 0.2, b: 0.25, a: 0.25}
     - _GDirectionAB: {r: 0.85, g: 0.3, b: 0.25, a: 0.25}
@@ -81,7 +81,7 @@ Material:
     - _GFrequency: {r: 0.5, g: 0.25, b: 0.6, a: 0.245}
     - _GSpeed: {r: 4, g: 2, b: 1, a: 1}
     - _GSteepness: {r: 3.0301306, g: 1, b: 1, a: 1}
-    - _InvFadeParemeter: {r: 1.44, g: 0.08562102, b: 0.09414239, a: 0.48}
+    - _InvFadeParemeter: {r: 2, g: 0.08562102, b: 0.09414239, a: 0.5}
     - _ReflectionColor: {r: 0.32156864, g: 0.36078432, b: 0.3921569, a: 1}
     - _RefractionFog: {r: 0.8681778, g: 0.8797176, b: 0.8880597, a: 1}
     - _SpecularColor: {r: 0.82089555, g: 0.80581594, b: 0.7718869, a: 1}

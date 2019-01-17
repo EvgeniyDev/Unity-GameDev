@@ -66,7 +66,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
             // the jump state needs to read here to make sure it is not missed
-            if (!m_Jump)
+            if ((m_Jump == false) && (m_Jumping == false))
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
@@ -111,16 +111,16 @@ namespace UnityStandardAssets.Characters.FirstPerson
                                m_CharacterController.height / 2f, Physics.AllLayers, QueryTriggerInteraction.Ignore);
             desiredMove = Vector3.ProjectOnPlane(desiredMove, hitInfo.normal).normalized;
 
-            if (!isGrounded && m_CharacterController.isGrounded)
+            if ((isGrounded == false) && (m_CharacterController.isGrounded == true))
             {
-                m_MoveDir.y = 0;
-                m_Jump = false;
                 m_Jumping = true;
+                m_MoveDir.y = 0;
                 m_MoveDir.x = (1f - hitNormal.y) * hitNormal.x * (speed - slideFriction);
                 m_MoveDir.z = (1f - hitNormal.y) * hitNormal.z * (speed - slideFriction);
             }
             else
             {
+                if (m_CharacterController.isGrounded == true) m_Jumping = false;
                 m_MoveDir.x = desiredMove.x * speed;
                 m_MoveDir.z = desiredMove.z * speed;
             }
@@ -201,7 +201,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 return;
             }
-            if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded)
+            if (m_CharacterController.velocity.magnitude > 0 && m_CharacterController.isGrounded) 
             {
                 m_Camera.transform.localPosition =
                     m_HeadBob.DoHeadBob(m_CharacterController.velocity.magnitude +
@@ -230,7 +230,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
-            if (!m_Jumping)
+            if (!m_Jumping && m_CharacterController.isGrounded)
                 m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
 #endif
             // set the desired speed to be walking or running
