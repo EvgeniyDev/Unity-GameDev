@@ -98,7 +98,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
-            isGrounded = Vector3.Angle(Vector3.up, hitNormal) <= m_CharacterController.slopeLimit;
+            isGrounded = (Vector3.Angle(Vector3.up, hitNormal) <= m_CharacterController.slopeLimit);
 
             float speed;
             GetInput(out speed);
