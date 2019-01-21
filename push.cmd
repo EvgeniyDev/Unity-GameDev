@@ -2,12 +2,12 @@
 set /p commit="Enter commit text: "
 
 git checkout master
-echo
+echo .
 git add *
-echo
+echo .
 git commit -m "%commit%"
-echo
+echo .
 git push --set-upstream origin master
-echo
+echo .
 
 pause 
