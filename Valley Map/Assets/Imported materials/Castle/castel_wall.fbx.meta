@@ -125,6 +125,7 @@ ModelImporter:
     100238: Plane
     100240: Point
     100242: Sun
+    100244: Cylinder.050
     400000: //RootNode
     400002: Cube.000
     400004: Cube.001
@@ -247,6 +248,7 @@ ModelImporter:
     400238: Plane
     400240: Point
     400242: Sun
+    400244: Cylinder.050
     2100000: Material.001
     2100002: Material.004
     2100004: Material.003
@@ -370,6 +372,7 @@ ModelImporter:
     2300232: Cylinder.096
     2300234: Cylinder.097
     2300236: Plane
+    2300238: Cylinder.050
     3300000: Cube.000
     3300002: Cube.001
     3300004: Cube.002
@@ -489,6 +492,7 @@ ModelImporter:
     3300232: Cylinder.096
     3300234: Cylinder.097
     3300236: Plane
+    3300238: Cylinder.050
     4300000: Cube.022
     4300002: Cube.021
     4300004: Cube.020
@@ -608,6 +612,7 @@ ModelImporter:
     4300232: Cube.002
     4300234: Cube.001
     4300236: Cylinder.000
+    4300238: Cylinder.050
     10800000: Point
     10800002: Sun
   externalObjects: {}
