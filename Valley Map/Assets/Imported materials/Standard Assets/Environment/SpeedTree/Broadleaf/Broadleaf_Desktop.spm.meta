@@ -89,15 +89,15 @@ SpeedTreeImporter:
   bestWindQuality: 4
   hasBillboard: 1
   lODSettings:
-  - height: 0.5
+  - height: 0.5420983
     castShadows: 1
     receiveShadows: 1
-    useLightProbes: 1
+    useLightProbes: 0
     reflectionProbeUsage: 1
-    enableBump: 1
-    enableHue: 1
+    enableBump: 0
+    enableHue: 0
     enableSubsurface: 0
-    windQuality: 2
+    windQuality: 1
   - height: 0.25
     castShadows: 1
     receiveShadows: 1
@@ -125,12 +125,12 @@ SpeedTreeImporter:
     enableHue: 1
     enableSubsurface: 0
     windQuality: 1
-  enableSmoothLODTransition: 1
+  enableSmoothLODTransition: 0
   animateCrossFading: 1
   billboardTransitionCrossFadeWidth: 0.25
   fadeOutWidth: 0.25
-  scaleFactor: 0.3048
-  materialVersion: 2
+  scaleFactor: 0.6
+  materialVersion: 3
   materialLocation: 0
   userData: 
   assetBundleName: 
