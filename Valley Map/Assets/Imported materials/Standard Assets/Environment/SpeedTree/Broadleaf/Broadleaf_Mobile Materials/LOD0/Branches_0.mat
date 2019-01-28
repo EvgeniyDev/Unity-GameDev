@@ -35,7 +35,7 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.33
     - _Shininess: 0.125
-    - _WindQuality: 4
+    - _WindQuality: 1
     m_Colors:
     - _Color: {r: 0.46226418, g: 0.3966582, b: 0.3292542, a: 1}
     - _HueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}

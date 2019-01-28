@@ -40,16 +40,16 @@ SpeedTreeImporter:
   serializedVersion: 5
   mainColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
   hueVariation: {r: 0.3773585, g: 0.3640609, b: 0.3506586, a: 1}
-  alphaTestRef: 0.118
+  alphaTestRef: 0.1
   bestWindQuality: 4
   hasBillboard: 1
   lODSettings:
-  - height: 0.5395227
+  - height: 0.6012248
     castShadows: 1
     receiveShadows: 1
     useLightProbes: 0
     reflectionProbeUsage: 1
-    enableBump: 0
+    enableBump: 1
     enableHue: 0
     enableSubsurface: 0
     windQuality: 2
@@ -62,15 +62,15 @@ SpeedTreeImporter:
     enableHue: 1
     enableSubsurface: 0
     windQuality: 4
-  - height: 0.125
+  - height: 0.09657952
     castShadows: 1
     receiveShadows: 1
-    useLightProbes: 1
+    useLightProbes: 0
     reflectionProbeUsage: 1
     enableBump: 1
-    enableHue: 1
+    enableHue: 0
     enableSubsurface: 0
-    windQuality: 4
+    windQuality: 1
   - height: 0.01
     castShadows: 0
     receiveShadows: 0

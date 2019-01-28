@@ -84,9 +84,9 @@ Material:
     - WaveSpeed: {r: 19, g: 9, b: -16, a: -7}
     - _AnimationDirection: {r: 2, g: 1, b: -1, a: 1}
     - _AnimationTiling: {r: 0.4, g: 0.39099997, b: 0.56, a: 0.7}
-    - _BaseColor: {r: 0.14079742, g: 0.21275365, b: 0.26415092, a: 0.9019608}
+    - _BaseColor: {r: 0.14117648, g: 0.14938597, b: 0.2627451, a: 0.9019608}
     - _BumpDirection: {r: 10, g: -30, b: 10, a: -20}
-    - _BumpTiling: {r: 0.15, g: 0.15, b: 0.15, a: 0.15}
+    - _BumpTiling: {r: 0.01, g: 0.01, b: 0.15, a: 0.15}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DepthColor: {r: 0.29811764, g: 0.36611718, b: 0.39552242, a: 0.34509805}
     - _DistortParams: {r: -0.37, g: 0.02, b: 4.99, a: 0.09}
@@ -99,10 +99,10 @@ Material:
     - _GSteepness: {r: 3.0301306, g: 1, b: 1, a: 1}
     - _HorizonColor: {r: 0.172, g: 0.463, b: 0.435, a: 1}
     - _InvFadeParemeter: {r: 1.42, g: 0.08562102, b: 0.09414239, a: 0.259}
-    - _ReflectionColor: {r: 0.32156864, g: 0.36078432, b: 0.3921569, a: 1}
+    - _ReflectionColor: {r: 0.26521894, g: 0.32847717, b: 0.3773585, a: 1}
     - _RefrColor: {r: 0.34, g: 0.85, b: 0.92, a: 1}
     - _RefractionFog: {r: 0.8681778, g: 0.8797176, b: 0.8880597, a: 1}
-    - _SpecularColor: {r: 0.07609469, g: 0.16981131, b: 0.1670009, a: 1}
+    - _SpecularColor: {r: 0, g: 0, b: 0, a: 0}
     - _WorldLightDir: {r: 0.013992369, g: -0.17359081, b: -0.9847186, a: 0}
     - _horizonColor: {r: 0.172, g: 0.463, b: 0.435, a: 0}
 --- !u!1002 &2100001
