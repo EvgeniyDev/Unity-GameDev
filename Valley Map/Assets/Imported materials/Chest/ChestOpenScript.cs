@@ -9,6 +9,7 @@ public class ChestOpenScript : MonoBehaviour
 	public AudioSource audioOpen;
 	public AudioSource audioClose;
 
+
 	void OnTriggerEnter (Collider other)
 	{
 		anim = chestDoor.GetComponent<Animation>();
@@ -16,6 +17,9 @@ public class ChestOpenScript : MonoBehaviour
 		anim.Play ("ChestOpen");
 		audioOpen.Play(0);
 	}
+
+
+
 	void OnTriggerExit(Collider other)
 	{
 		anim["ChestOpen"].speed = -2;

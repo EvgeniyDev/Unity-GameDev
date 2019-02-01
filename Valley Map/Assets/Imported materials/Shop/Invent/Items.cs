@@ -2,15 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using System;
+using UnityStandardAssets.CrossPlatformInput;
+
+
 
 public class Items : MonoBehaviour
 {
 	public int[] items;
 	public int mouseSlot;
 	public ShopScript lib;
-
+	public FirstPersonController fps;
 
 	private bool invent = false;
+
+
+	public Texture2D cursorTexture;
+
+	void Start(){
+		Cursor.lockState =  CursorLockMode.Locked;
+		Cursor.visible = false;
+
+		CursorMode cursorMode = CursorMode.Auto;
+		Vector2 hotSpot = Vector2.zero;
+		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+	}
+		
+
 
 
 
@@ -18,9 +36,26 @@ public class Items : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.E))
 		{
 			invent = !invent;
-			Time.timeScale = 1;
+			if (invent) {
+				Time.timeScale = 0;
+				Cursor.lockState =  CursorLockMode.None;
+				Cursor.visible = true;
+
+				fps.enabled = false;
+			} else {
+				Time.timeScale = 1;
+				Cursor.lockState =  CursorLockMode.Locked;
+				Cursor.visible = false;
+
+				fps.enabled = true;
+			}
 		}
 	}
+
+
+
+
+
 
 
 
