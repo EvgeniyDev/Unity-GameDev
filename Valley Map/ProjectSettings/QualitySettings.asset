@@ -150,16 +150,16 @@ QualitySettings:
     name: Very High
     pixelLightCount: 2
     shadows: 0
-    shadowResolution: 1
-    shadowProjection: 0
-    shadowCascades: 4
+    shadowResolution: 0
+    shadowProjection: 1
+    shadowCascades: 2
     shadowDistance: 500
     shadowNearPlaneOffset: 0
-    shadowCascade2Split: 0.15027334
+    shadowCascade2Split: 0.1584703
     shadowCascade4Split: {x: 0.13296495, y: 0.28839815, z: 0.33407047}
     shadowmaskMode: 1
     blendWeights: 4
-    textureQuality: 0
+    textureQuality: 1
     anisotropicTextures: 0
     antiAliasing: 0
     softParticles: 0
@@ -222,7 +222,7 @@ QualitySettings:
     Nintendo Switch: 5
     PS4: 5
     PSP2: 2
-    Standalone: 5
+    Standalone: 2
     Tizen: 2
     WebGL: 3
     WiiU: 5
