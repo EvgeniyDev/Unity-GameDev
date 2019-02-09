@@ -148,7 +148,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Very High
-    pixelLightCount: 2
+    pixelLightCount: 4
     shadows: 0
     shadowResolution: 0
     shadowProjection: 1
@@ -159,7 +159,7 @@ QualitySettings:
     shadowCascade4Split: {x: 0.13296495, y: 0.28839815, z: 0.33407047}
     shadowmaskMode: 0
     blendWeights: 4
-    textureQuality: 1
+    textureQuality: 0
     anisotropicTextures: 0
     antiAliasing: 0
     softParticles: 0
