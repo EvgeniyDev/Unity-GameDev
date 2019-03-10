@@ -6,7 +6,6 @@ using System;
 using UnityStandardAssets.CrossPlatformInput;
 
 
-
 public class Items : MonoBehaviour
 {
 	public int[] items;
@@ -15,7 +14,6 @@ public class Items : MonoBehaviour
 	public FirstPersonController fps;
 
 	private bool invent = false;
-
 
 	public Texture2D cursorTexture;
 
@@ -28,10 +26,6 @@ public class Items : MonoBehaviour
 		Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
 	}
 		
-
-
-
-
 	void Update(){
 		if (Input.GetKeyDown(KeyCode.E))
 		{
@@ -51,13 +45,6 @@ public class Items : MonoBehaviour
 			}
 		}
 	}
-
-
-
-
-
-
-
 
 	void OnGUI()
 	{

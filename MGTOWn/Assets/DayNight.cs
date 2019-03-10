@@ -11,7 +11,8 @@ public class DayNight : MonoBehaviour
 	public GameObject star;
 	public GameObject sun;
 
-	void Start(){
+	void Start()
+    {
 		sky = GameObject.Find("Terrain/Sky/Low");
 		star = GameObject.Find("Terrain/Sky/LowStar");
 		sun = GameObject.Find("Terrain/Sun");
@@ -19,26 +20,26 @@ public class DayNight : MonoBehaviour
 		star.SetActive (false);
 	}
 
-	bool flag = true;
+	bool flag = false;
 	void Update ()
 	{
-		transform.Rotate(Time.deltaTime * speed, 0, 0, Space.Self);
+		transform.Rotate(Time.deltaTime * -speed, 0, 0, Space.Self);
 
 		float angleX = Math.Abs(sun.transform.rotation.x);
-		Debug.Log (angleX +"\n");
+		//Debug.Log (angleX +"\n");
 
 
 		if (angleX >= 0.675) {
 			if (flag) {
-				sky.SetActive (false);
-				star.SetActive (true);
+				sky.SetActive (true);
+				star.SetActive (false);
 				flag = !flag;
 			}
 		}
 		if (angleX <= 0.1) {
 			if (!flag) {
-				sky.SetActive (true);
-				star.SetActive (false);
+				sky.SetActive (false);
+				star.SetActive (true);
 				flag = !flag;
 			}
 		}
