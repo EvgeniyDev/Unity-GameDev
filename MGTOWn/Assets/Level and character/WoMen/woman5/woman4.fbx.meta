@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: c2631c59efcc862439679d6a43d6f7c6
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: CMU compliant skeleton
+    100002: eyebrow012Mesh
+    100004: f_dress_11Mesh
+    100006: female_genericMesh
+    100008: Head
+    100010: Hips
+    100012: LeftArm
+    100014: LeftFingerBase
+    100016: LeftFoot
+    100018: LeftForeArm
+    100020: LeftHand
+    100022: LeftHandFinger1
+    100024: LeftLeg
+    100026: LeftShoulder
+    100028: LeftToeBase
+    100030: LeftUpLeg
+    100032: LHipJoint
+    100034: low-polyMesh
+    100036: LowerBack
+    100038: LThumb
+    100040: Neck
+    100042: Neck1
+    100044: ponytail01Mesh
+    100046: RHipJoint
+    100048: RightArm
+    100050: RightFingerBase
+    100052: RightFoot
+    100054: RightForeArm
+    100056: RightHand
+    100058: RightHandFinger1
+    100060: RightLeg
+    100062: RightShoulder
+    100064: RightToeBase
+    100066: RightUpLeg
+    100068: RThumb
+    100070: Spine
+    100072: Spine1
+    100074: teeth_baseMesh
+    100076: //RootNode
+    100078: elvs_basicflatshoes4Mesh
+    100080: eyebrow009Mesh
+    100082: eyelashes01Mesh
+    400000: CMU compliant skeleton
+    400002: eyebrow012Mesh
+    400004: f_dress_11Mesh
+    400006: female_genericMesh
+    400008: Head
+    400010: Hips
+    400012: LeftArm
+    400014: LeftFingerBase
+    400016: LeftFoot
+    400018: LeftForeArm
+    400020: LeftHand
+    400022: LeftHandFinger1
+    400024: LeftLeg
+    400026: LeftShoulder
+    400028: LeftToeBase
+    400030: LeftUpLeg
+    400032: LHipJoint
+    400034: low-polyMesh
+    400036: LowerBack
+    400038: LThumb
+    400040: Neck
+    400042: Neck1
+    400044: ponytail01Mesh
+    400046: RHipJoint
+    400048: RightArm
+    400050: RightFingerBase
+    400052: RightFoot
+    400054: RightForeArm
+    400056: RightHand
+    400058: RightHandFinger1
+    400060: RightLeg
+    400062: RightShoulder
+    400064: RightToeBase
+    400066: RightUpLeg
+    400068: RThumb
+    400070: Spine
+    400072: Spine1
+    400074: teeth_baseMesh
+    400076: //RootNode
+    400078: elvs_basicflatshoes4Mesh
+    400080: eyebrow009Mesh
+    400082: eyelashes01Mesh
+    2100000: female_generic
+    2100002: ponytail01
+    2100004: low-poly
+    2100006: eyebrow012
+    2100008: teeth_base
+    2100010: f_dress_11
+    2100012: eyebrow009
+    2100014: eyelashes01
+    2100016: elvs_basicflatshoes4
+    4300000: female_genericMesh
+    4300002: ponytail01Mesh
+    4300004: low-polyMesh
+    4300006: eyebrow012Mesh
+    4300008: teeth_baseMesh
+    4300010: f_dress_11Mesh
+    4300012: eyebrow009Mesh
+    4300014: eyelashes01Mesh
+    4300016: elvs_basicflatshoes4Mesh
+    9500000: //RootNode
+    13700000: eyebrow012Mesh
+    13700002: f_dress_11Mesh
+    13700004: female_genericMesh
+    13700006: low-polyMesh
+    13700008: ponytail01Mesh
+    13700010: teeth_baseMesh
+    13700012: elvs_basicflatshoes4Mesh
+    13700014: eyebrow009Mesh
+    13700016: eyelashes01Mesh
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.099999994
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
