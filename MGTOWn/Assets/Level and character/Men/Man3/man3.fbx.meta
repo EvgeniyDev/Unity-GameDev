@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: da4a9053baeac4c4187406805071b262
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: boots_ankle_maleMesh
+    100002: CMU compliant skeleton
+    100004: eyebrow012Mesh
+    100006: eyelashes01Mesh
+    100008: Head
+    100010: Hips
+    100012: LeftArm
+    100014: LeftFingerBase
+    100016: LeftFoot
+    100018: LeftForeArm
+    100020: LeftHand
+    100022: LeftHandFinger1
+    100024: LeftLeg
+    100026: LeftShoulder
+    100028: LeftToeBase
+    100030: LeftUpLeg
+    100032: LHipJoint
+    100034: low-polyMesh
+    100036: LowerBack
+    100038: LThumb
+    100040: //RootNode
+    100042: man3Mesh
+    100044: mens_boho_bottom1elvMesh
+    100046: mens_boho_top1elvMesh
+    100048: Neck
+    100050: Neck1
+    100052: RHipJoint
+    100054: RightArm
+    100056: RightFingerBase
+    100058: RightFoot
+    100060: RightForeArm
+    100062: RightHand
+    100064: RightHandFinger1
+    100066: RightLeg
+    100068: RightShoulder
+    100070: RightToeBase
+    100072: RightUpLeg
+    100074: RThumb
+    100076: short04Mesh
+    100078: Spine
+    100080: Spine1
+    100082: teeth_baseMesh
+    400000: boots_ankle_maleMesh
+    400002: CMU compliant skeleton
+    400004: eyebrow012Mesh
+    400006: eyelashes01Mesh
+    400008: Head
+    400010: Hips
+    400012: LeftArm
+    400014: LeftFingerBase
+    400016: LeftFoot
+    400018: LeftForeArm
+    400020: LeftHand
+    400022: LeftHandFinger1
+    400024: LeftLeg
+    400026: LeftShoulder
+    400028: LeftToeBase
+    400030: LeftUpLeg
+    400032: LHipJoint
+    400034: low-polyMesh
+    400036: LowerBack
+    400038: LThumb
+    400040: //RootNode
+    400042: man3Mesh
+    400044: mens_boho_bottom1elvMesh
+    400046: mens_boho_top1elvMesh
+    400048: Neck
+    400050: Neck1
+    400052: RHipJoint
+    400054: RightArm
+    400056: RightFingerBase
+    400058: RightFoot
+    400060: RightForeArm
+    400062: RightHand
+    400064: RightHandFinger1
+    400066: RightLeg
+    400068: RightShoulder
+    400070: RightToeBase
+    400072: RightUpLeg
+    400074: RThumb
+    400076: short04Mesh
+    400078: Spine
+    400080: Spine1
+    400082: teeth_baseMesh
+    2100000: man3
+    2100002: short04
+    2100004: low-poly
+    2100006: eyebrow012
+    2100008: eyelashes01
+    2100010: teeth_base
+    2100012: boots_ankle_male
+    2100014: mens_boho_top1elv
+    2100016: mens_boho_bottom1elv
+    4300000: man3Mesh
+    4300002: short04Mesh
+    4300004: low-polyMesh
+    4300006: eyebrow012Mesh
+    4300008: eyelashes01Mesh
+    4300010: teeth_baseMesh
+    4300012: boots_ankle_maleMesh
+    4300014: mens_boho_top1elvMesh
+    4300016: mens_boho_bottom1elvMesh
+    9500000: //RootNode
+    13700000: boots_ankle_maleMesh
+    13700002: eyebrow012Mesh
+    13700004: eyelashes01Mesh
+    13700006: low-polyMesh
+    13700008: man3Mesh
+    13700010: mens_boho_bottom1elvMesh
+    13700012: mens_boho_top1elvMesh
+    13700014: short04Mesh
+    13700016: teeth_baseMesh
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.099999994
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
