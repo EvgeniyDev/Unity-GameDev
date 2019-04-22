@@ -85,11 +85,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-
-            if (Input.GetKey("escape"))
-            {
-                Application.Quit();
-            }
         }
 
 
@@ -257,6 +252,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.name == "Swimming Trigger")
+            {
+                m_WalkSpeed = 8f;
+                m_RunSpeed = 13f;
+                m_JumpSpeed = 3f;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.name == "Swimming Trigger")
+            {
+                m_WalkSpeed = 15f;
+                m_RunSpeed = 25f;
+                m_JumpSpeed = 20f;
+            }
+        }
 
         private void RotateView()
         {
@@ -279,6 +293,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 return;
             }
+
             body.AddForceAtPosition(m_CharacterController.velocity * 0.1f, hit.point, ForceMode.Impulse);
         }
     }
