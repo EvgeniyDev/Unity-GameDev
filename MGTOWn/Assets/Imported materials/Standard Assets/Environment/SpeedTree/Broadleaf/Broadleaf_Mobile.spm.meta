@@ -38,21 +38,21 @@ SpeedTreeImporter:
       name: Leaves_1_LOD2
     second: {fileID: 2100000, guid: f568ca8b20ae095418f3e2a3b341d8f6, type: 2}
   serializedVersion: 5
-  mainColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 1}
-  hueVariation: {r: 0.3773585, g: 0.3640609, b: 0.3506586, a: 1}
-  alphaTestRef: 0.1
+  mainColor: {r: 1, g: 1, b: 1, a: 1}
+  hueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
+  alphaTestRef: 0
   bestWindQuality: 4
   hasBillboard: 1
   lODSettings:
-  - height: 0.6012248
-    castShadows: 1
-    receiveShadows: 1
+  - height: 0.5194426
+    castShadows: 0
+    receiveShadows: 0
     useLightProbes: 0
     reflectionProbeUsage: 1
-    enableBump: 1
+    enableBump: 0
     enableHue: 0
-    enableSubsurface: 0
-    windQuality: 2
+    enableSubsurface: 1
+    windQuality: 0
   - height: 0.25
     castShadows: 1
     receiveShadows: 1
@@ -60,32 +60,32 @@ SpeedTreeImporter:
     reflectionProbeUsage: 1
     enableBump: 1
     enableHue: 1
-    enableSubsurface: 0
+    enableSubsurface: 1
     windQuality: 4
-  - height: 0.09657952
+  - height: 0.125
     castShadows: 1
     receiveShadows: 1
-    useLightProbes: 0
+    useLightProbes: 1
     reflectionProbeUsage: 1
     enableBump: 1
-    enableHue: 0
-    enableSubsurface: 0
-    windQuality: 1
+    enableHue: 1
+    enableSubsurface: 1
+    windQuality: 4
   - height: 0.01
-    castShadows: 0
-    receiveShadows: 0
+    castShadows: 1
+    receiveShadows: 1
     useLightProbes: 0
     reflectionProbeUsage: 0
     enableBump: 1
     enableHue: 1
-    enableSubsurface: 0
+    enableSubsurface: 1
     windQuality: 1
-  enableSmoothLODTransition: 1
-  animateCrossFading: 1
+  enableSmoothLODTransition: 0
+  animateCrossFading: 0
   billboardTransitionCrossFadeWidth: 0.25
   fadeOutWidth: 0.25
-  scaleFactor: 0.5
-  materialVersion: 2
+  scaleFactor: 0.8
+  materialVersion: 3
   materialLocation: 1
   userData: 
   assetBundleName: 

@@ -9,41 +9,38 @@ public class DayNight : MonoBehaviour
 	public float speed = 0f;
 	public GameObject sky;
 	public GameObject star;
-	public GameObject sun;
+	public Light sun;
 
 	void Start()
     {
-		sky = GameObject.Find("Terrain/Sky/Low");
-		star = GameObject.Find("Terrain/Sky/LowStar");
-		sun = GameObject.Find("Terrain/Sun");
 		sky.SetActive (true);
 		star.SetActive (false);
 	}
 
-	bool flag = false;
+	bool flag = true;
 	void Update ()
 	{
-		transform.Rotate(Time.deltaTime * -speed, 0, 0, Space.Self);
+		transform.Rotate(Time.deltaTime * speed, 0, 0, Space.Self);
 
 		float angleX = Math.Abs(sun.transform.rotation.x);
-		//Debug.Log (angleX +"\n");
+		Debug.Log (angleX +"\n");
 
+		//night
+		if ((angleX >= 0.707) && (flag)) {
+			sky.SetActive (false);
+			star.SetActive (true);
+			sun.intensity = 0;
+			RenderSettings.fog = false;
+			flag = !flag;
+		}
 
-		if (angleX >= 0.675) {
-			if (flag) {
-				sky.SetActive (true);
-				star.SetActive (false);
-				flag = !flag;
-			}
+		//day
+		if ((angleX <= 0.1) && (!flag)) {
+			sky.SetActive (true);
+			star.SetActive (false);
+			sun.intensity = 1.5f;
+			RenderSettings.fog = true;
+			flag = !flag;
 		}
-		if (angleX <= 0.1) {
-			if (!flag) {
-				sky.SetActive (false);
-				star.SetActive (true);
-				flag = !flag;
-			}
-		}
-			
-		//sky.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0);
 	}
 }
