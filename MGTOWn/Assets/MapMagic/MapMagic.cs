@@ -419,7 +419,7 @@ namespace MapMagic
 
 					serializer = null;
 				}
-				else { Debug.Log("MapMagic: Could not find the proper graph data. It the data file was changed externally reload the scene, otherwise create the new one in the General Settings tab."); return; }
+				else { /*Debug.Log("MapMagic: Could not find the proper graph data. It the data file was changed externally reload the scene, otherwise create the new one in the General Settings tab.");*/ return; }
 			}
 		#endregion
 

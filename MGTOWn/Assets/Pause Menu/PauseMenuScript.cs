@@ -31,7 +31,7 @@ public class PauseMenuScript : MonoBehaviour
 
             if (isOpened)
             {
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 
@@ -51,7 +51,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         if (isOpened) isOpened = !isOpened;
 
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 
 public class DayNight : MonoBehaviour
@@ -23,7 +21,7 @@ public class DayNight : MonoBehaviour
 		transform.Rotate(Time.deltaTime * speed, 0, 0, Space.Self);
 
 		float angleX = Math.Abs(sun.transform.rotation.x);
-		Debug.Log (angleX +"\n");
+		//Debug.Log (angleX +"\n");
 
 		//night
 		if ((angleX >= 0.707) && (flag)) {
