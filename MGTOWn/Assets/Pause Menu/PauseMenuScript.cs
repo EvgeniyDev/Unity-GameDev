@@ -6,6 +6,7 @@ public class PauseMenuScript : MonoBehaviour
 {
     public GameObject PlayerUI;
     public GameObject PauseMenu;
+    public GameObject Tooltip;
     public FirstPersonController fps;
     bool isOpened;
 
@@ -31,7 +32,7 @@ public class PauseMenuScript : MonoBehaviour
 
             if (isOpened)
             {
-                Time.timeScale = 0; // Was commeted
+                Time.timeScale = 0; // Was commented
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 
@@ -51,7 +52,7 @@ public class PauseMenuScript : MonoBehaviour
     {
         if (isOpened) isOpened = !isOpened;
 
-		Time.timeScale = 1; // Was commeted
+		Time.timeScale = 1; // Was commented
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -59,6 +60,8 @@ public class PauseMenuScript : MonoBehaviour
         PauseMenu.SetActive(false);
 
         fps.enabled = true;
+
+        Tooltip.SetActive(false);
     }
 
     public void SaveGame()

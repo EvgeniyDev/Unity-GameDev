@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Inventory : MonoBehaviour
@@ -8,6 +9,17 @@ public class Inventory : MonoBehaviour
     [HideInInspector]
     public List<Item> items;
     public GameObject cellContainer;
+
+    [Header ("Tooltip")]
+    public GameObject tooltipObject;
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI itemDescription;
+
+
+    void Awake()
+    {
+        tooltipObject.SetActive(false);    
+    }
 
     void Start()
     {
