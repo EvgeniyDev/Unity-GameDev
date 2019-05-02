@@ -2,6 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using UnityEditor.VersionControl;
+using System.Timers;
+using System.Collections;
 
 
 public class Inventory : MonoBehaviour
@@ -15,6 +19,10 @@ public class Inventory : MonoBehaviour
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemDescription;
 
+	public Text text;
+	public Image textBox;
+
+
 
     void Awake()
     {
@@ -23,6 +31,9 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
+		textBox.enabled = false;
+		text.enabled = false;
+
         items = new List<Item>();
 
         for (int i = 0; i < cellContainer.transform.childCount; i++)
@@ -35,7 +46,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -52,6 +63,7 @@ public class Inventory : MonoBehaviour
 
     void AddItem(Item currentItem)
     {
+		ShowMessage (currentItem.name);
         if (currentItem.isStackable)
         {
             AddStackable(currentItem);
@@ -123,4 +135,26 @@ public class Inventory : MonoBehaviour
             }
         }
     }
+
+
+	Timer t;
+	bool stopT;
+	void ShowMessage(string msg){
+		
+		try { // Clear output
+			msg = msg.Substring (0, msg.IndexOf ("("));
+		} catch (Exception){ }
+
+		text.text = "Added: "+msg;
+
+		text.enabled = true;
+		textBox.enabled = true;
+		StartCoroutine (Wait ());
+	}
+
+	IEnumerator Wait(){
+		yield return new WaitForSeconds(5);
+		text.enabled = false;
+		textBox.enabled = false;
+	}
 }
