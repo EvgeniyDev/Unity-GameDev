@@ -43,7 +43,7 @@ QualitySettings:
     excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Custom
-    pixelLightCount: 4
+    pixelLightCount: 2
     shadows: 0
     shadowResolution: 1
     shadowProjection: 0
