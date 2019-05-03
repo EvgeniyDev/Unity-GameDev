@@ -44,13 +44,13 @@ QualitySettings:
   - serializedVersion: 2
     name: Custom
     pixelLightCount: 2
-    shadows: 0
+    shadows: 2
     shadowResolution: 1
-    shadowProjection: 0
+    shadowProjection: 1
     shadowCascades: 2
     shadowDistance: 500
     shadowNearPlaneOffset: 0
-    shadowCascade2Split: 0.1584703
+    shadowCascade2Split: 0.25976348
     shadowCascade4Split: {x: 0.34045792, y: 0.53911865, z: 0.74617445}
     shadowmaskMode: 0
     blendWeights: 1
