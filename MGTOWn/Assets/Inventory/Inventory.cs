@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
 {
     [HideInInspector]
     public List<Item> items;
+    public List<Item> pickedItemsLinks;
     public GameObject cellContainer;
 
     [Header ("Tooltip")]
@@ -22,18 +23,16 @@ public class Inventory : MonoBehaviour
 	public Text text;
 	public Image textBox;
 
-
-
     void Awake()
     {
-        tooltipObject.SetActive(false);    
+        tooltipObject.SetActive(false);
+
+        textBox.enabled = false;
+        text.enabled = false;
     }
 
     void Start()
     {
-		textBox.enabled = false;
-		text.enabled = false;
-
         items = new List<Item>();
 
         for (int i = 0; i < cellContainer.transform.childCount; i++)
@@ -80,7 +79,8 @@ public class Inventory : MonoBehaviour
                 items[i] = currentItem;
                 items[i].itemAmount = 1;
                 DisplayItems();
-                Destroy(currentItem.gameObject);
+                pickedItemsLinks.Add(currentItem);
+                currentItem.gameObject.SetActive(false);
 
                 return;
             }
@@ -95,7 +95,8 @@ public class Inventory : MonoBehaviour
             {
                 items[i].itemAmount++;
                 DisplayItems();
-                Destroy(currentItem.gameObject);
+                pickedItemsLinks.Add(currentItem);
+                currentItem.gameObject.SetActive(false);
 
                 return;
             }
@@ -139,6 +140,7 @@ public class Inventory : MonoBehaviour
 
 	Timer t;
 	bool stopT;
+
 	void ShowMessage(string msg){
 		
 		try { // Clear output

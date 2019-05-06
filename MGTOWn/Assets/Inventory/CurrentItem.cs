@@ -9,7 +9,7 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler
     GameObject inventoryObject;
     Inventory inventory;
 
-    GameObject droppedItem;
+    Item droppedItem;
 
     void Start()
     {
@@ -25,7 +25,8 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler
         {
             if (inventory.items[index].id != 0)
             {
-                droppedItem = Instantiate(inventory.items[index].prefab) as GameObject;
+                droppedItem = inventory.pickedItemsLinks[index];
+                droppedItem.gameObject.SetActive(true);
                 droppedItem.transform.position = Camera.main.transform.position + 2 * Camera.main.transform.forward;
 
                 if (inventory.items[index].itemAmount > 1)
@@ -37,6 +38,10 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler
                     inventory.items[index] = new Item();
                 }
 
+                //inventory.pickedItemsLinks.ForEach(Debug.Log);
+
+                inventory.pickedItemsLinks.Remove(droppedItem);
+                
                 inventory.DisplayItems();
             }
         }
