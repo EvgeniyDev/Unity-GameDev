@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Main menu gradient
   m_EditorClassIdentifier: 
   colorMode: 3
-  topLeft: {r: 1, g: 1, b: 1, a: 1}
-  topRight: {r: 1, g: 1, b: 1, a: 1}
+  topLeft: {r: 0.3921569, g: 1, b: 0.37254903, a: 1}
+  topRight: {r: 0.39215687, g: 1, b: 0.37254903, a: 1}
   bottomLeft: {r: 1, g: 1, b: 1, a: 1}
   bottomRight: {r: 1, g: 1, b: 1, a: 1}

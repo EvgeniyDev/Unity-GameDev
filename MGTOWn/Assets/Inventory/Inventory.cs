@@ -12,14 +12,14 @@ public class Inventory : MonoBehaviour
 {
     [HideInInspector]
     public List<Item> items;
-    public List<Item> pickedItemsLinks;
     public GameObject cellContainer;
+
+    public GameObject dragPrefab;
 
     [Header ("Tooltip")]
     public GameObject tooltipObject;
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemDescription;
-
 	public Text text;
 	public Image textBox;
 
@@ -78,9 +78,9 @@ public class Inventory : MonoBehaviour
             {
                 items[i] = currentItem;
                 items[i].itemAmount = 1;
+
                 DisplayItems();
-                pickedItemsLinks.Add(currentItem);
-                currentItem.gameObject.SetActive(false);
+                DestroyImmediate(currentItem.gameObject);
 
                 return;
             }
@@ -94,9 +94,9 @@ public class Inventory : MonoBehaviour
             if (items[i].id == currentItem.id)
             {
                 items[i].itemAmount++;
+
                 DisplayItems();
-                pickedItemsLinks.Add(currentItem);
-                currentItem.gameObject.SetActive(false);
+                DestroyImmediate(currentItem.gameObject);
 
                 return;
             }
@@ -147,7 +147,7 @@ public class Inventory : MonoBehaviour
 			msg = msg.Substring (0, msg.IndexOf ("("));
 		} catch (Exception){ }
 
-		text.text = "Added: "+msg;
+        text.text = "Added: " + msg;
 
 		text.enabled = true;
 		textBox.enabled = true;

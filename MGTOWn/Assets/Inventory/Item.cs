@@ -13,4 +13,5 @@ public class Item : MonoBehaviour
 
     public bool isStackable;
     public Sprite icon;
+    public string prefab;
 }

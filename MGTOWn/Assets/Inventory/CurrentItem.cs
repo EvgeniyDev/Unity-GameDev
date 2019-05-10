@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CurrentItem : MonoBehaviour, IPointerClickHandler
+public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler
 {
     [HideInInspector]
     public int index;
@@ -9,14 +9,10 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler
     GameObject inventoryObject;
     Inventory inventory;
 
-    Item droppedItem;
-
     void Start()
     {
         inventoryObject = GameObject.FindGameObjectWithTag("InventoryHolder");
         inventory = inventoryObject.GetComponent<Inventory>();
-
-        droppedItem = null;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -25,8 +21,9 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler
         {
             if (inventory.items[index].id != 0)
             {
-                droppedItem = inventory.pickedItemsLinks[index];
-                droppedItem.gameObject.SetActive(true);
+                GameObject droppedItem = Instantiate(Resources.Load<GameObject>(inventory.items[index].prefab));
+
+                droppedItem.name = inventory.items[index].itemName;
                 droppedItem.transform.position = Camera.main.transform.position + 2 * Camera.main.transform.forward;
 
                 if (inventory.items[index].itemAmount > 1)
@@ -38,12 +35,29 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler
                     inventory.items[index] = new Item();
                 }
 
-                //inventory.pickedItemsLinks.ForEach(Debug.Log);
-
-                inventory.pickedItemsLinks.Remove(droppedItem);
-                
                 inventory.DisplayItems();
             }
+        }
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        GameObject draggedObject = Drag.draggedObject;
+
+        if (draggedObject == null)
+        {
+            return;
+        }
+
+        CurrentItem currentDraggedItem = draggedObject.GetComponent<CurrentItem>();
+
+        if (currentDraggedItem != null) 
+        {                                                                                                       //swap
+            Item currentItem = inventory.items[GetComponent<CurrentItem>().index];
+            inventory.items[GetComponent<CurrentItem>().index] = inventory.items[currentDraggedItem.index];
+            inventory.items[currentDraggedItem.index] = currentItem;
+                       
+            inventory.DisplayItems();
         }
     }
 }
