@@ -10,7 +10,7 @@ public class Options : MonoBehaviour
     public Dropdown resolutionDropdown;
     Resolution[] resolutions;
 
-    public void Start()
+    void Start()
     {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
