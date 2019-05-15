@@ -6,10 +6,8 @@ using TMPro;
 public class ChestOpenScript : MonoBehaviour
 {
 	public GameObject chestDoor;
-	public GameObject chestLock;
 	public AudioSource audioOpen;
 	public AudioSource audioClose;
-	public TextMeshProUGUI Hint;
 
 	protected Animation anim;
 	private bool chestIsOpen = false;
@@ -24,23 +22,24 @@ public class ChestOpenScript : MonoBehaviour
 		rayOrigin = new Vector3(0.5f, 0.5f, 0f); // center of the screen
 	}
 
-	void OnTriggerStay(Collider col){
+	void Update(){
 		ray = Camera.main.ViewportPointToRay (rayOrigin);
-		if (Physics.Raycast (ray, out hit, 5.0f)) {
-			if (hit.collider.CompareTag (chestLock.tag)) {
-				Hint.text = "Press E to Open Chest";
+		if (Physics.Raycast (ray, out hit, 10.0f)) {
+			if (hit.collider.name == name) {
 				if (Input.GetKeyDown (KeyCode.E)) {
 					chestIsOpen = !chestIsOpen;
 					if (chestIsOpen) {
 						OpenChestAnimation ();
+						GetComponent<TextHint> ().textHint = "E - Close Chest";
 						//ToDo When chest opened
 					} else {
 						CloseChestAnimation ();
+						GetComponent<TextHint> ().textHint = "E - Open Chest";
 						//ToDo When chest closed
 					}
 				}
-			} else Hint.text = "";
-		} else Hint.text = "";
+			}
+		}
 	} 
 
 	void OpenChestAnimation(){
@@ -48,6 +47,7 @@ public class ChestOpenScript : MonoBehaviour
 		anim["ChestOpen"].speed = 1;
 		anim.Play ("ChestOpen");
 		audioOpen.Play(0);
+
 	}
 	void CloseChestAnimation(){
 		anim["ChestOpen"].speed = -2;

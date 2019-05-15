@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8439200387899833158}
   - component: {fileID: 8439200387901160300}
   - component: {fileID: 8439200387902126508}
-  - component: {fileID: 8439200387879698277}
   - component: {fileID: 8969852134249181885}
   - component: {fileID: 8439200387879698276}
+  - component: {fileID: 1012649921930678275}
+  - component: {fileID: 9154964859234054631}
   m_Layer: 0
   m_Name: flower4
   m_TagString: Untagged
@@ -82,19 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8439200387879698277
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8439200387899860838}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.36276016, y: 0.861287, z: 0.33882105}
-  m_Center: {x: 0.004215985, y: 0.41480547, z: 0.017753987}
 --- !u!54 &8969852134249181885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,3 +118,30 @@ MonoBehaviour:
   isStackable: 0
   icon: {fileID: 21300000, guid: fd2b197bfa1a39445bcfe23cffa3a749, type: 3}
   prefab: Flowers/Prefabs/flower4
+--- !u!114 &1012649921930678275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439200387899860838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfac4c0a53516642b867b873ecb4b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textHint: E - Pick Rose
+--- !u!136 &9154964859234054631
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8439200387899860838}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.18138008
+  m_Height: 0.861287
+  m_Direction: 1
+  m_Center: {x: 0.004215985, y: 0.41480547, z: 0.017753987}

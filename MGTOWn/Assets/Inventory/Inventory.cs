@@ -15,6 +15,7 @@ public class Inventory : MonoBehaviour
     public GameObject cellContainer;
 
     public GameObject dragPrefab;
+	public TextMeshProUGUI Hint;
 
     [Header ("Tooltip")]
     public GameObject tooltipObject;
@@ -55,6 +56,7 @@ public class Inventory : MonoBehaviour
                 if (hit.collider.GetComponent<Item>())
                 {
                     AddItem(hit.collider.GetComponent<Item>());
+					Hint.text = "";
                 }
             }
         }
@@ -62,7 +64,7 @@ public class Inventory : MonoBehaviour
 
     void AddItem(Item currentItem)
     {
-		ShowMessage (currentItem.name);
+		ShowMessage (currentItem.itemName);
         if (currentItem.isStackable)
         {
             AddStackable(currentItem);

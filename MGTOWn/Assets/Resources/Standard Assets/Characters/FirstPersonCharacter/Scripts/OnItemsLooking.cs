@@ -20,9 +20,9 @@ public class OnItemsLooking : MonoBehaviour
 	void Update()
 	{
 		ray = Camera.main.ViewportPointToRay (rayOrigin);
-		if (Physics.Raycast (ray, out hit, 20f)) {
-			if (hit.collider.GetComponent<Item>() != null) 
-				Hint.text = "E - " + hit.collider.GetComponent<Item>().itemName;
+		if (Physics.Raycast (ray, out hit, 10f)) {
+			if (hit.collider.GetComponent<TextHint> () != null) 
+				Hint.text = hit.collider.GetComponent<TextHint> ().textHint;
 			else
 				Hint.text = "";
 		}

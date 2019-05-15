@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8077532330509232401}
   - component: {fileID: 6049328709299392137}
   - component: {fileID: 8989681299192461903}
+  - component: {fileID: 1012148669808540812}
   m_Layer: 0
   m_Name: RawMeatPreF
   m_TagString: Untagged
@@ -130,3 +131,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.07091424, y: 0.10469383, z: 0.009684843}
   m_Center: {x: 0.021216547, y: 0.007945793, z: 0.0048424215}
+--- !u!114 &1012148669808540812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8745276648043504253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfac4c0a53516642b867b873ecb4b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textHint: E - Take piece of Meat
