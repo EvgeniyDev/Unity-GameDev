@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PosterActiver : MonoBehaviour
-{
+public class PosterActiver : MonoBehaviour{
 	public TextMeshProUGUI Hint;
 	public GameObject Poster;
 	public Texture2D texture;
