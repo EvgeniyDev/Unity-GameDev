@@ -8,6 +8,7 @@ TagManager:
   - InventoryHolder
   - Poster
   - Chest
+  - Weapon
   layers:
   - Default
   - TransparentFX

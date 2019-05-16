@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler
+public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler 
 {
     [HideInInspector]
     public int index;
 
     GameObject inventoryObject;
+    CurrentWeapon weaponSlot;
     Inventory inventory;
 
     void Start()
     {
         inventoryObject = GameObject.FindGameObjectWithTag("InventoryHolder");
+        weaponSlot = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CurrentWeapon>();
         inventory = inventoryObject.GetComponent<Inventory>();
     }
 
@@ -52,7 +54,15 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler
         CurrentItem currentDraggedItem = draggedObject.GetComponent<CurrentItem>();
 
         if (currentDraggedItem != null) 
-        {                                                                                                       //swap
+        {
+            //swap
+
+            if ((inventory.items[currentDraggedItem.index].type != Item.Type.Weapon)
+                && weaponSlot.isOver)
+            {
+                return;
+            }
+
             Item currentItem = inventory.items[GetComponent<CurrentItem>().index];
             inventory.items[GetComponent<CurrentItem>().index] = inventory.items[currentDraggedItem.index];
             inventory.items[currentDraggedItem.index] = currentItem;
@@ -61,3 +71,4 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler
         }
     }
 }
+
