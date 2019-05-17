@@ -118,6 +118,7 @@ MonoBehaviour:
   isStackable: 0
   icon: {fileID: 21300000, guid: fd2b197bfa1a39445bcfe23cffa3a749, type: 3}
   prefab: Flowers/Prefabs/flower4
+  type: 4
 --- !u!114 &1012649921930678275
 MonoBehaviour:
   m_ObjectHideFlags: 0

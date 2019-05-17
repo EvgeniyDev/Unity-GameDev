@@ -57,6 +57,7 @@ MonoBehaviour:
   isStackable: 1
   icon: {fileID: 21300000, guid: 6b3423c8cb820884d95cc89433afa621, type: 3}
   prefab: Meat/RawMeatPreF
+  type: 3
 --- !u!33 &8701784674647866563
 MeshFilter:
   m_ObjectHideFlags: 0

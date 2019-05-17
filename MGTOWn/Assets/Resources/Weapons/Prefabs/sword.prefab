@@ -131,3 +131,4 @@ MonoBehaviour:
   isStackable: 0
   icon: {fileID: 21300000, guid: a0d11cad130b36a42bceabbfaceca9d3, type: 3}
   prefab: Weapons/Prefabs/sword
+  type: 1

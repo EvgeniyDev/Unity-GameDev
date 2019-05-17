@@ -53,16 +53,22 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler
 
         CurrentItem currentDraggedItem = draggedObject.GetComponent<CurrentItem>();
 
-        if (currentDraggedItem != null) 
+        if (currentDraggedItem != null)
         {
-            //swap
-
-            if ((inventory.items[currentDraggedItem.index].type != Item.Type.Weapon)
-                && weaponSlot.isOver)
+            if (inventory.items[currentDraggedItem.index].type != Item.Type.Weapon
+                && weaponSlot.isOver) 
             {
                 return;
             }
 
+            if (inventory.items[currentDraggedItem.index].type != inventory.items[GetComponent<CurrentItem>().index].type
+                && inventory.items[weaponSlot.weaponSlotIndex].id == inventory.items[currentDraggedItem.index].id
+                && inventory.items[GetComponent<CurrentItem>().index].id != 0)
+            {
+                return;
+            }
+
+            //swap
             Item currentItem = inventory.items[GetComponent<CurrentItem>().index];
             inventory.items[GetComponent<CurrentItem>().index] = inventory.items[currentDraggedItem.index];
             inventory.items[currentDraggedItem.index] = currentItem;

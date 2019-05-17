@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class CurrentWeapon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public GameObject weaponImageObject;
+
     Inventory inventory;
     GameObject inventoryObject;
+
+    Image weaponImage;
 
     [HideInInspector]
     public int weaponSlotIndex;
@@ -16,6 +21,9 @@ public class CurrentWeapon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         isOver = false;
 
+        weaponImage = weaponImageObject.GetComponent<Image>();
+        weaponImageObject.SetActive(false);
+
         inventoryObject = GameObject.FindGameObjectWithTag("InventoryHolder");
         inventory = inventoryObject.GetComponent<Inventory>();
 
@@ -26,6 +34,19 @@ public class CurrentWeapon : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
                 weaponSlotIndex = i;
                 return;
             }
+        }
+    }
+
+    void Update()
+    {
+        if (inventory.items[weaponSlotIndex].id != 0)
+        {
+            weaponImage.sprite = inventory.items[weaponSlotIndex].icon;
+            weaponImageObject.SetActive(true);
+        }
+        else
+        {
+            weaponImageObject.SetActive(false);
         }
     }
 
