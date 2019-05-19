@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2748172103109153287}
   - component: {fileID: 2748172103109153280}
   - component: {fileID: 2748172103109153281}
+  - component: {fileID: 4868215848976247747}
   m_Layer: 0
   m_Name: "Weapon \u21165"
   m_TagString: Untagged
@@ -130,3 +131,16 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 65a1f336df5cd724681727b5a96e346e, type: 3}
   prefab: "Weapons/Prefabs/Weapon \u21165"
   type: 1
+--- !u!114 &4868215848976247747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748172103109153282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfac4c0a53516642b867b873ecb4b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textHint: E - Take Toggle

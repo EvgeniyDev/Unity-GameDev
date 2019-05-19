@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 2795213267617119926}
   - component: {fileID: 3718531438381718246}
   - component: {fileID: 2795213267617119927}
+  - component: {fileID: 7295066610478997787}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,3 +133,16 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a0d11cad130b36a42bceabbfaceca9d3, type: 3}
   prefab: Weapons/Prefabs/sword
   type: 1
+--- !u!114 &7295066610478997787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2795213267617119924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfac4c0a53516642b867b873ecb4b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textHint: E - Take Sword

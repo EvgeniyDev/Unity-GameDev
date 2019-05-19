@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4670795546454635160}
   - component: {fileID: 4670795546454635167}
   - component: {fileID: 4670795546454635166}
+  - component: {fileID: 193366235175162283}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -130,3 +131,16 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 1f742029bac22ab4592057a66d9df71d, type: 3}
   prefab: Weapons/Prefabs/Axe
   type: 1
+--- !u!114 &193366235175162283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4670795546454635165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfac4c0a53516642b867b873ecb4b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textHint: E - Take Axe

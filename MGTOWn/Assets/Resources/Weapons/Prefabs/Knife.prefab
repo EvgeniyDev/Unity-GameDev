@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5240701700443321435}
   - component: {fileID: 3372062412527301630}
   - component: {fileID: 7941572592661447875}
+  - component: {fileID: 721732556162256956}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -129,3 +130,16 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a39387a0ea1ced74ba8d1037a38b75b2, type: 3}
   prefab: Weapons/Prefabs/Knife
   type: 1
+--- !u!114 &721732556162256956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6758855658641412166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfac4c0a53516642b867b873ecb4b9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textHint: E - Take Knife
