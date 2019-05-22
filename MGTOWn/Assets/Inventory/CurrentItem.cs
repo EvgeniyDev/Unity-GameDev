@@ -7,13 +7,13 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler
     public int index;
 
     GameObject inventoryObject;
-    CurrentWeapon weaponSlot;
+    CurrentWeaponSlot weaponSlot;
     Inventory inventory;
 
     void Start()
     {
         inventoryObject = GameObject.FindGameObjectWithTag("InventoryHolder");
-        weaponSlot = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CurrentWeapon>();
+        weaponSlot = GameObject.FindGameObjectWithTag("Weapon").GetComponent<CurrentWeaponSlot>();
         inventory = inventoryObject.GetComponent<Inventory>();
     }
 
