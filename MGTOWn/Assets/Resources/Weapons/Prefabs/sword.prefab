@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2795213267617119927}
   - component: {fileID: 7295066610478997787}
   m_Layer: 0
-  m_Name: sword
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2795213267617119924}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 11.80391, y: 11.803946, z: 11.80394}
+  m_LocalScale: {x: 20, y: 20, z: 25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   itemAmount: 0
   isStackable: 0
   icon: {fileID: 21300000, guid: a0d11cad130b36a42bceabbfaceca9d3, type: 3}
-  prefab: Weapons/Prefabs/sword
+  prefab: Weapons/Prefabs/Sword
   type: 1
 --- !u!114 &7295066610478997787
 MonoBehaviour:
