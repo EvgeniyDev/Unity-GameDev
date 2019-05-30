@@ -27,6 +27,14 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        WeaponPickUp();
+
+        PlayAnimation();
+    }
+
+
+    void WeaponPickUp()
+    {
         if (inventory.items[weaponSlot.weaponSlotIndex].id != 0)
         {
             weaponImage.sprite = inventory.items[weaponSlot.weaponSlotIndex].icon;
@@ -47,12 +55,19 @@ public class Weapon : MonoBehaviour
                 Destroy(weapon.GetComponent<Rigidbody>());
                 Destroy(weapon.GetComponent<Collider>());
 
-                animator = weapon.AddComponent<Animator>();
-                animator.runtimeAnimatorController = Resources.Load("Weapons/Weapon") as RuntimeAnimatorController;
-                
-                weapon.transform.parent = player.transform.GetChild(0);
+                if (animator == null)
+                {
+                    animator = weapon.AddComponent<Animator>();
+                    animator.runtimeAnimatorController = Resources.Load("Weapons/Controllers/"
+                        + weapon.name) as RuntimeAnimatorController;
+                }
+
+                weapon.transform.parent = player.transform.GetChild(0).transform;
                 weapon.transform.localPosition = SetWeaponPosition(weapon);
                 weapon.transform.localEulerAngles = SetWeaponRotation(weapon);
+
+                weapon.transform.localPosition = new Vector3(0f, 0f, 0f);
+                weapon.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
             }
         }
         else
@@ -65,8 +80,6 @@ public class Weapon : MonoBehaviour
 
             weaponImageObject.SetActive(false);
         }
-
-        PlayAnimation();
     }
 
 
@@ -88,7 +101,7 @@ public class Weapon : MonoBehaviour
                 temp = new Vector3(1.25f, -2.75f, 2.2f);
                 break;
             case "Knife":
-                temp = new Vector3(1f, -1.5f, 0.5f);
+                temp = new Vector3(1.3f, -1.5f, 0.5f);
                 break;
         }
 
@@ -113,7 +126,7 @@ public class Weapon : MonoBehaviour
                 temp = new Vector3(-70f, 80f, 0f);
                 break;
             case "Knife":
-                temp = new Vector3(25f, -150f, 95f);
+                temp = new Vector3(15f, -180f, 80f);
                 break;
         }
 
@@ -122,23 +135,12 @@ public class Weapon : MonoBehaviour
 
     void PlayAnimation()
     {
-        if (weapon != null && Input.GetMouseButton(0))
+        if (weapon != null && Input.GetButtonDown("Fire1"))
         {
-            if (weapon.name == "Knife")
-            {
-                animator.Play("Knife stab");
-                return;
-            }
+            int animAmount = 2;
 
-            switch (Random.Range(-100, 100) % 2)
-            {
-                case 0:
-                    animator.Play("Stab");
-                    break;
-                case 1:
-                    animator.Play("Splash");
-                    break;
-            }
+            animator.SetTrigger("Attack");
+            animator.SetInteger("randomAttack", Random.Range(0, animAmount));
         }
     }
 }
