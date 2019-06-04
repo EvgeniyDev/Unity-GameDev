@@ -43,6 +43,9 @@ public class Weapon : MonoBehaviour
             if (weapon != null && weapon.name != inventory.items[weaponSlot.weaponSlotIndex].itemName)
             {
                 Destroy(weapon);
+                Destroy(animator);
+
+                animator = null;
                 weapon = null;
             }
 
@@ -63,11 +66,6 @@ public class Weapon : MonoBehaviour
                 }
 
                 weapon.transform.parent = player.transform.GetChild(0).transform;
-                weapon.transform.localPosition = SetWeaponPosition(weapon);
-                weapon.transform.localEulerAngles = SetWeaponRotation(weapon);
-
-                weapon.transform.localPosition = new Vector3(0f, 0f, 0f);
-                weapon.transform.localEulerAngles = new Vector3(0f, 0f, 0f);
             }
         }
         else
@@ -75,6 +73,9 @@ public class Weapon : MonoBehaviour
             if (weapon != null && inventory.items[weaponSlot.weaponSlotIndex].id == 0)
             {
                 Destroy(weapon);
+                Destroy(animator);
+
+                animator = null;
                 weapon = null;
             }
 
