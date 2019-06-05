@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Weapon : MonoBehaviour
+public class WeaponInteraction : MonoBehaviour
 {
     GameObject player;
 

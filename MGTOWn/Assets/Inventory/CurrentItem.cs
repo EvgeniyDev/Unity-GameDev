@@ -50,18 +50,18 @@ public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler
         {
             return;
         }
-
+         
         CurrentItem currentDraggedItem = draggedObject.GetComponent<CurrentItem>();
 
         if (currentDraggedItem != null)
         {
-            if (inventory.items[currentDraggedItem.index].type != Item.Type.Weapon
+            if ((inventory.items[currentDraggedItem.index].GetType() != typeof(WeaponItem))
                 && weaponSlot.isOver) 
             {
                 return;
             }
 
-            if (inventory.items[currentDraggedItem.index].type != inventory.items[GetComponent<CurrentItem>().index].type
+            if ((inventory.items[currentDraggedItem.index].GetType() != inventory.items[GetComponent<CurrentItem>().index].GetType())
                 && inventory.items[weaponSlot.weaponSlotIndex].id == inventory.items[currentDraggedItem.index].id
                 && inventory.items[GetComponent<CurrentItem>().index].id != 0)
             {

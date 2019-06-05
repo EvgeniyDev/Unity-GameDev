@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2748172103107153090}
   - component: {fileID: 2748172103109153287}
   - component: {fileID: 2748172103109153280}
-  - component: {fileID: 2748172103109153281}
+  - component: {fileID: 2474540513772495142}
   - component: {fileID: 4868215848976247747}
   m_Layer: 0
   m_Name: "Weapon \u21165"
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2748172103109153281
+--- !u!114 &2474540513772495142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,17 +120,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2748172103109153282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43bfc5d8f0935a4b897d3d40894e9d6, type: 3}
+  m_Script: {fileID: 11500000, guid: b8f176d7af23b9b4a9e1eb5e0ea90563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 5
-  itemName: "Weapon \u21165"
-  description: Actually don't know what it is
+  itemName: Weapon 5
+  description: Actually don't know what it is...
   itemAmount: 0
   isStackable: 0
   icon: {fileID: 21300000, guid: 65a1f336df5cd724681727b5a96e346e, type: 3}
   prefab: "Weapons/Prefabs/Weapon \u21165"
-  type: 1
+  baseDamage: 20
 --- !u!114 &4868215848976247747
 MonoBehaviour:
   m_ObjectHideFlags: 0

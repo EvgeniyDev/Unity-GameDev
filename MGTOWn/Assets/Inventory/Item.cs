@@ -2,6 +2,7 @@
 
 public class Item : MonoBehaviour
 {
+    [Header("Item stats")]
     public int id;
     public string itemName;
 
@@ -14,7 +15,4 @@ public class Item : MonoBehaviour
     public bool isStackable;
     public Sprite icon;
     public string prefab;
-
-    public enum Type { None, Weapon, Armor, Drop, QuestItem };
-    public Type type = Type.None;
 }

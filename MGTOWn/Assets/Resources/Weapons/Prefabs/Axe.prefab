@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4670795546452372573}
   - component: {fileID: 4670795546454635160}
   - component: {fileID: 4670795546454635167}
-  - component: {fileID: 4670795546454635166}
+  - component: {fileID: 1869541619798827351}
   - component: {fileID: 193366235175162283}
   m_Layer: 0
   m_Name: Axe
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4670795546454635166
+--- !u!114 &1869541619798827351
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,17 +120,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4670795546454635165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43bfc5d8f0935a4b897d3d40894e9d6, type: 3}
+  m_Script: {fileID: 11500000, guid: b8f176d7af23b9b4a9e1eb5e0ea90563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
   itemName: Axe
-  description: 
+  description: Axe attacks!
   itemAmount: 0
   isStackable: 0
   icon: {fileID: 21300000, guid: 1f742029bac22ab4592057a66d9df71d, type: 3}
   prefab: Weapons/Prefabs/Axe
-  type: 1
+  baseDamage: 50
 --- !u!114 &193366235175162283
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6758855658639412870}
   - component: {fileID: 5240701700443321435}
   - component: {fileID: 3372062412527301630}
-  - component: {fileID: 7941572592661447875}
+  - component: {fileID: 3626365497023057172}
   - component: {fileID: 721732556162256956}
   m_Layer: 0
   m_Name: Knife
@@ -110,7 +110,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7941572592661447875
+--- !u!114 &3626365497023057172
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6758855658641412166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43bfc5d8f0935a4b897d3d40894e9d6, type: 3}
+  m_Script: {fileID: 11500000, guid: b8f176d7af23b9b4a9e1eb5e0ea90563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 4
@@ -129,7 +129,7 @@ MonoBehaviour:
   isStackable: 0
   icon: {fileID: 21300000, guid: a39387a0ea1ced74ba8d1037a38b75b2, type: 3}
   prefab: Weapons/Prefabs/Knife
-  type: 1
+  baseDamage: 5
 --- !u!114 &721732556162256956
 MonoBehaviour:
   m_ObjectHideFlags: 0

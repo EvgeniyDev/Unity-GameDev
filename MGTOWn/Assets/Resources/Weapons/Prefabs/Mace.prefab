@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1550602304492871351}
   - component: {fileID: 8973859380798096407}
   - component: {fileID: 6057525852631152759}
-  - component: {fileID: 506143648923612604}
+  - component: {fileID: 3851060036250529301}
   - component: {fileID: 6420798068911619859}
   m_Layer: 0
   m_Name: Mace
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &506143648923612604
+--- !u!114 &3851060036250529301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1550602304490668151}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43bfc5d8f0935a4b897d3d40894e9d6, type: 3}
+  m_Script: {fileID: 11500000, guid: b8f176d7af23b9b4a9e1eb5e0ea90563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
@@ -130,7 +130,7 @@ MonoBehaviour:
   isStackable: 0
   icon: {fileID: 21300000, guid: 418b53df5e68650409184680f9dea265, type: 3}
   prefab: Weapons/Prefabs/Mace
-  type: 1
+  baseDamage: 15
 --- !u!114 &6420798068911619859
 MonoBehaviour:
   m_ObjectHideFlags: 0

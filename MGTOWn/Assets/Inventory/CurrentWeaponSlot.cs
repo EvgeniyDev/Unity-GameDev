@@ -12,7 +12,6 @@ public class CurrentWeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerEx
     [HideInInspector]
     public int weaponSlotIndex;
 
-    [HideInInspector]
     public bool isOver;
 
     void Start()
@@ -34,11 +33,11 @@ public class CurrentWeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        isOver = !isOver;
+        isOver = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        OnPointerEnter(eventData);
+        isOver = false;
     }
 }
