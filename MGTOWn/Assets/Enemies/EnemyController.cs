@@ -8,12 +8,23 @@ public class EnemyController : MonoBehaviour
     Transform target;
     NavMeshAgent agent;
 
+    EnemyStats enemy;
+    PlayerStats player;
+
+    Animator enemyAnimator;
+    WeaponInteraction weaponInteraction;
+
     void Start()
     {
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-    }
 
+        enemy = GetComponent<EnemyStats>();
+        player = target.GetComponent<PlayerStats>();
+
+        enemyAnimator = GetComponent<Animator>();
+        weaponInteraction = player.GetComponent<WeaponInteraction>();
+    }
 
     void Update()
     {
@@ -25,9 +36,11 @@ public class EnemyController : MonoBehaviour
 
             if (distanceToTarget <= agent.stoppingDistance)
             {
-                //Attack
-
+                agent.SetDestination(transform.position);
                 FaceTarget();
+
+                Attack();
+                TakingDamage();
             }
         }
     }
@@ -37,6 +50,20 @@ public class EnemyController : MonoBehaviour
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); 
+    }
+
+
+    void Attack()
+    {
+       
+    }
+
+    void TakingDamage()
+    {
+        if (weaponInteraction.isAttacking)
+        {
+            enemy.TakingDamage(player.damage);
+        }
     }
 
     void OnDrawGizmos()

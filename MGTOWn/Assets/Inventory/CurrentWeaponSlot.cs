@@ -31,6 +31,7 @@ public class CurrentWeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerEx
         }
     }
 
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         isOver = true;

@@ -8,27 +8,32 @@ public class WeaponInteraction : MonoBehaviour
     Inventory inventory;
 
     public GameObject weaponImageObject;
+    public GameObject weaponDamageObject;
     public CurrentWeaponSlot weaponSlot;
     GameObject weapon;
     Image weaponImage;
+    Text weaponDamage;
 
     Animator animator;
 
+    public bool isAttacking;
+
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = PlayerManager.instance.player;
         inventory = GameObject.FindGameObjectWithTag("InventoryHolder").GetComponent<Inventory>();
 
         weapon = null;
 
         weaponImage = weaponImageObject.GetComponent<Image>();
+        weaponDamage = weaponDamageObject.GetComponent<Text>();
+
         weaponImageObject.SetActive(false);
     }
 
     void Update()
     {
         WeaponPickUp();
-
         PlayAnimation();
     }
 
@@ -39,6 +44,7 @@ public class WeaponInteraction : MonoBehaviour
         {
             weaponImage.sprite = inventory.items[weaponSlot.weaponSlotIndex].icon;
             weaponImageObject.SetActive(true);
+            weaponDamage.text = (inventory.items[weaponSlot.weaponSlotIndex] as WeaponItem).baseDamage.ToString();
 
             if (weapon != null && weapon.name != inventory.items[weaponSlot.weaponSlotIndex].itemName)
             {
@@ -80,68 +86,25 @@ public class WeaponInteraction : MonoBehaviour
             }
 
             weaponImageObject.SetActive(false);
+            weaponDamage.text = "";
         }
     }
 
 
-    Vector3 SetWeaponPosition(GameObject weapon)
+    public void PlayAnimation()
     {
-        Vector3 temp = new Vector3();
-
-        switch (weapon.name)
-        {
-            case "Weapon №5":
-                goto case "Sword";
-            case "Sword":
-                temp = new Vector3(1.5f, -3.75f, 2.5f);
-                break;
-            case "Axe":
-                temp = new Vector3(1f, -3f, 2.2f);
-                break;
-            case "Mace":
-                temp = new Vector3(1.25f, -2.75f, 2.2f);
-                break;
-            case "Knife":
-                temp = new Vector3(1.3f, -1.5f, 0.5f);
-                break;
-        }
-
-        return temp;
-    }
-
-    Vector3 SetWeaponRotation(GameObject weapon)
-    {
-        Vector3 temp = new Vector3();
-
-        switch (weapon.name)
-        {
-            case "Mace":
-                goto case "Axe";
-            case "Weapon №5":
-                temp = new Vector3(-115f, -105f, -170f);
-                break;
-            case "Sword":
-                temp = new Vector3(120f, 70f, 150f);
-                break;
-            case "Axe":
-                temp = new Vector3(-70f, 80f, 0f);
-                break;
-            case "Knife":
-                temp = new Vector3(15f, -180f, 80f);
-                break;
-        }
-
-        return temp;
-    }
-
-    void PlayAnimation()
-    {
-        if (weapon != null && Input.GetButtonDown("Fire1"))
+        if (weapon != null && Input.GetButtonDown("Fire1") && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
         {
             int animAmount = 2;
 
             animator.SetTrigger("Attack");
             animator.SetInteger("randomAttack", Random.Range(0, animAmount));
+
+            isAttacking = true;
+        }
+        else
+        {
+            isAttacking = false;
         }
     }
 }

@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 
 public class CurrentItem : MonoBehaviour, IPointerClickHandler, IDropHandler 
-{
+{   
     [HideInInspector]
     public int index;
 

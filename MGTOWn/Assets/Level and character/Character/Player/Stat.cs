@@ -22,7 +22,8 @@ public class Stat
 
     public void RemoveModifier(int modifier)
     {
-
+        if (modifier != 0)
+            modifiers.Remove(modifier);
     }
 
 }
