@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public float lookRadius = 15f;
+    public float lookRadius;
 
     Transform target;
     NavMeshAgent agent;
@@ -12,7 +13,9 @@ public class EnemyController : MonoBehaviour
     PlayerStats player;
 
     Animator enemyAnimator;
-    WeaponInteraction weaponInteraction;
+    PlayerController playerController;
+
+    Color defaultColor;
 
     void Start()
     {
@@ -23,12 +26,16 @@ public class EnemyController : MonoBehaviour
         player = target.GetComponent<PlayerStats>();
 
         enemyAnimator = GetComponent<Animator>();
-        weaponInteraction = player.GetComponent<WeaponInteraction>();
+        playerController = player.GetComponent<PlayerController>();
+
+        defaultColor = gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color;
     }
 
     void Update()
     {
         float distanceToTarget = Vector3.Distance(target.position, transform.position);
+
+        enemyAnimator.SetFloat("Distance", distanceToTarget);
 
         if (distanceToTarget <= lookRadius)
         {
@@ -39,9 +46,12 @@ public class EnemyController : MonoBehaviour
                 agent.SetDestination(transform.position);
                 FaceTarget();
 
-                Attack();
                 TakingDamage();
             }
+        }
+        else
+        {
+            agent.SetDestination(transform.position);
         }
     }
 
@@ -49,21 +59,35 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f); 
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
-
 
     void Attack()
     {
-       
+        player.TakingDamage(enemy.damage);        
     }
 
     void TakingDamage()
     {
-        if (weaponInteraction.isAttacking)
+        if (playerController.isAttacking)
         {
-            enemy.TakingDamage(player.damage);
+            StartCoroutine(DamageDelay());
         }
+    }
+
+    IEnumerator DamageDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        enemy.TakingDamage(player.damage);
+
+        StartCoroutine(DamageColorChange());
+    }
+
+    IEnumerator DamageColorChange()
+    {
+        gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
+        yield return new WaitForSeconds(0.15f);
+        gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = defaultColor;
     }
 
     void OnDrawGizmos()

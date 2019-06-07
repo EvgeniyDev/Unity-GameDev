@@ -4,6 +4,7 @@ public class EnemyStats : MonoBehaviour
 {
     public int maxHealth;
     public int damage;
+    public float attackSpeed;
 
     int currentHealth;
 
@@ -14,7 +15,7 @@ public class EnemyStats : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    private void Start()
+    void Start()
     {
         Awake();
     }
@@ -23,13 +24,12 @@ public class EnemyStats : MonoBehaviour
     {
         currentHealth -= damage;
 
-        Debug.Log(currentHealth);
-
         if (currentHealth <= 0)
         {
             Die();
         }
     }
+
     void Die()
     {
 
