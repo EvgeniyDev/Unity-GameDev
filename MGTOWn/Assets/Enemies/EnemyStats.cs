@@ -18,6 +18,8 @@ public class EnemyStats : MonoBehaviour
     void Start()
     {
         Awake();
+
+        animator = GetComponent<Animator>();
     }
 
     public void TakingDamage(int damage)
@@ -26,13 +28,16 @@ public class EnemyStats : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            currentHealth = 0;
+
+            animator.SetBool("isDead", true);
         }
     }
 
     void Die()
     {
-
         Destroy(gameObject);
+
+        //Instantiate();
     }
 }

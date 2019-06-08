@@ -7,10 +7,10 @@ public class PlayerStats : MonoBehaviour
 {
     public Inventory inventory;
     public CurrentWeaponSlot weaponSlot;
-    public TMP_Text healthbarText;
 
-    public GameObject damageTakingPanel;
-    Image damageFadeOut;
+    public TMP_Text healthbarText;
+    public Slider healthbarSlider;
+    public Image damageFadeOut;
 
     [HideInInspector]
     public int damage;
@@ -25,11 +25,8 @@ public class PlayerStats : MonoBehaviour
         damage = 0;
         maxHealth = 100;
         currentHealth = maxHealth;
-
-        damageFadeOut = damageTakingPanel.GetComponent<Image>();
-        damageFadeOut.canvasRenderer.SetAlpha(1);
-
-        //damageTakingPanel.SetActive(false);
+        healthbarSlider.maxValue = maxHealth;
+        healthbarSlider.value = currentHealth;
     }
 
     void Update()
@@ -38,8 +35,6 @@ public class PlayerStats : MonoBehaviour
 
         CurrentHealthDisplay();
         Regeneration();
-
-        damageFadeOut.CrossFadeAlpha(1, 0.5f, false);
     }
 
     void WeaponDamageUpdate()
@@ -58,6 +53,8 @@ public class PlayerStats : MonoBehaviour
     {
         currentHealth -= damage;
 
+        StartCoroutine(DamageTakingColorChange());
+
         if (currentHealth <= 0)
         {
             currentHealth = 0;
@@ -67,15 +64,28 @@ public class PlayerStats : MonoBehaviour
 
     void CurrentHealthDisplay()
     {
+        healthbarSlider.value = currentHealth;
         healthbarText.text = currentHealth + "/" + maxHealth;
     }
 
     void Regeneration()
     {
-        if (currentHealth < maxHealth && !isRegenerating 
-            && Time.timeScale != 0)
+        if (currentHealth < maxHealth && !isRegenerating && Time.timeScale != 0 
+            && currentHealth >= 1)
         {
             StartCoroutine(RegenerationDelay());
+        }
+    }
+
+    IEnumerator DamageTakingColorChange()
+    {
+        Color tempColor = damageFadeOut.color;
+
+        for (float alpha = 0.5f; alpha >= -0.05f; alpha -= 0.025f)
+        {
+            tempColor.a = alpha;
+            damageFadeOut.color = tempColor;
+            yield return new WaitForSeconds(0.0125f);
         }
     }
 

@@ -13,8 +13,7 @@ public class PlayerController : MonoBehaviour
     GameObject weapon;
     Image weaponImage;
     Text weaponDamage;
-    
-
+   
     Animator animator;
 
     public bool isAttacking;

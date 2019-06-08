@@ -37,7 +37,8 @@ public class EnemyController : MonoBehaviour
 
         enemyAnimator.SetFloat("Distance", distanceToTarget);
 
-        if (distanceToTarget <= lookRadius)
+        if (distanceToTarget <= lookRadius
+            && !enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
             agent.SetDestination(target.position);
 
@@ -85,9 +86,10 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator DamageColorChange()
     {
-        gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
+        gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red; 
         yield return new WaitForSeconds(0.15f);
         gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = defaultColor;
+
     }
 
     void OnDrawGizmos()
