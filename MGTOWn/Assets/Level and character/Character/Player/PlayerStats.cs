@@ -12,6 +12,8 @@ public class PlayerStats : MonoBehaviour
     public Slider healthbarSlider;
     public Image damageFadeOut;
 
+    public DeathScript deathScript;
+
     [HideInInspector]
     public int damage;
 
@@ -58,7 +60,8 @@ public class PlayerStats : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            Die();
+
+            deathScript.Die();
         }
     }
 
@@ -97,10 +100,5 @@ public class PlayerStats : MonoBehaviour
         currentHealth += 1;
 
         isRegenerating = false;
-    }
-
-    void Die()
-    {
-
     }
 }
