@@ -42,6 +42,8 @@ public class EnemyController : MonoBehaviour
         {
             agent.SetDestination(target.position);
 
+            enemy.CurrentHealthDisplay();
+
             if (distanceToTarget <= agent.stoppingDistance)
             {
                 agent.SetDestination(transform.position);
@@ -52,6 +54,8 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            enemy.healthbar.SetActive(false);
+
             agent.SetDestination(transform.position);
         }
     }
@@ -72,24 +76,39 @@ public class EnemyController : MonoBehaviour
     {
         if (playerController.isAttacking)
         {
-            StartCoroutine(DamageDelay());
+            StartCoroutine(AttackDelay());
         }
     }
 
-    IEnumerator DamageDelay()
+    IEnumerator AttackDelay()
     {
         yield return new WaitForSeconds(0.5f);
-        enemy.TakingDamage(player.damage);
 
-        StartCoroutine(DamageColorChange());
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, agent.stoppingDistance)
+                && hit.collider.GetComponent<EnemyStats>())
+        {
+            enemy.TakingDamage(player.damage);
+            StartCoroutine(DamageColorChange());
+        }
     }
-
+    
     IEnumerator DamageColorChange()
     {
         gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red; 
         yield return new WaitForSeconds(0.15f);
         gameObject.transform.GetChild(0).GetComponent<Renderer>().material.color = defaultColor;
 
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.parent.name == "Walls")
+        {
+           
+        }
     }
 
     void OnDrawGizmos()

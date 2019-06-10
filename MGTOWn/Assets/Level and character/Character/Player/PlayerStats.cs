@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour
 
     bool isRegenerating;
 
-    void Awake()
+    void Start()
     {
         damage = 0;
         maxHealth = 100;

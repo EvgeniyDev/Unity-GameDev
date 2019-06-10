@@ -1,25 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyStats : MonoBehaviour
 {
+    public GameObject healthbar;
     public int maxHealth;
     public int damage;
-    public float attackSpeed;
 
     int currentHealth;
+    Slider healthbarSlider;
 
     Animator animator;
 
-    void Awake()
-    {
-        currentHealth = maxHealth;
-    }
-
     void Start()
     {
-        Awake();
-
         animator = GetComponent<Animator>();
+        healthbarSlider = healthbar.GetComponent<Slider>();
+
+        currentHealth = maxHealth;
+        healthbarSlider.maxValue = maxHealth;
+    }
+
+    public void CurrentHealthDisplay()
+    {
+        healthbar.SetActive(true);
+        healthbarSlider.value = currentHealth;
     }
 
     public void TakingDamage(int damage)

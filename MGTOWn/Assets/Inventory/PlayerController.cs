@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -35,7 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         WeaponPickUp();
 
-        Attack();
+        AttackAnimation();
     }
 
 
@@ -91,9 +92,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Attack()
+    public void AttackAnimation()
     {
-        if (weapon != null && Input.GetButtonDown("Fire1") && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        if (weapon != null && Input.GetButtonDown("Fire1") && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")
+            && Time.timeScale != 0)
         {
             int animAmount = 2;
 
