@@ -107,7 +107,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.transform.parent.name == "Walls")
         {
-           
+            //implement
         }
     }
 

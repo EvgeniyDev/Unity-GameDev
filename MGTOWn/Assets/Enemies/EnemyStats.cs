@@ -8,6 +8,7 @@ public class EnemyStats : MonoBehaviour
     public int damage;
 
     int currentHealth;
+
     Slider healthbarSlider;
 
     Animator animator;
