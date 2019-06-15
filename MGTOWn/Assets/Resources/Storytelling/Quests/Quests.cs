@@ -49,6 +49,10 @@ class Quests : MonoBehaviour
             longText.text += AuthorText[i];
     }
 
+	public void ClearLongAuthorText(){
+		longText.text = "";
+	}
+
     public void ActiveScenarioLayout(bool flag, LayoutUI layoutType = LayoutUI.NULL)
     {
         // true - only scenario
