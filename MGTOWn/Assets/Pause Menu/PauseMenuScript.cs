@@ -8,7 +8,8 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject Tooltip;
     public FirstPersonController fps;
-
+    public CurrentWeaponSlot weaponSlot;
+       
     bool isOpened;
 
     void Awake()
@@ -54,6 +55,8 @@ public class PauseMenuScript : MonoBehaviour
         fps.enabled = true;
 
         Tooltip.SetActive(false);
+
+        weaponSlot.isOver = false;
     }
 
     public void SaveGame()

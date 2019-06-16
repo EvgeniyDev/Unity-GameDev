@@ -10,7 +10,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof(AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
-        [SerializeField] private bool m_IsWalking;
+        [SerializeField] public bool m_IsWalking { get; private set; }
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
@@ -29,10 +29,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
         private Camera m_Camera;
+        private PlayerStats playerStats;
         private bool m_Jump;
         private float m_YRotation;
         private Vector2 m_Input;
-        private Vector3 m_MoveDir = Vector3.zero;
+        [HideInInspector]
+        public Vector3 m_MoveDir = Vector3.zero;
         private CharacterController m_CharacterController;
         private CollisionFlags m_CollisionFlags;
         private bool m_PreviouslyGrounded;
@@ -59,6 +61,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
             m_MouseLook.Init(transform, m_Camera.transform);
+
+            playerStats = GetComponent<PlayerStats>();
         }
 
         // Update is called once per frame
@@ -231,10 +235,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
             if (!m_Jumping && m_CharacterController.isGrounded)
+            {
                 m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+            }
 #endif
             // set the desired speed to be walking or running
-            speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            if (playerStats.currentStamina == 0)
+            {
+                speed = m_WalkSpeed;
+            }
+            else
+            {
+                speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
+            }
             m_Input = new Vector2(horizontal, vertical);
 
             // normalize input if it exceeds 1 in combined length:
@@ -258,7 +271,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_WalkSpeed = 8f;
                 m_RunSpeed = 13f;
-                m_JumpSpeed = 3f;
             }
         }
 
@@ -268,7 +280,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_WalkSpeed = 15f;
                 m_RunSpeed = 25f;
-                m_JumpSpeed = 20f;
             }
         }
 

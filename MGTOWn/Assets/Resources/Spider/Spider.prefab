@@ -690,6 +690,7 @@ MonoBehaviour:
   healthbar: {fileID: 7552275997201215846}
   maxHealth: 45
   damage: 8
+  drop: {fileID: 8449608226294972391, guid: 3d14c5a744bac1943ac96913583955a7, type: 3}
 --- !u!1 &2129952589159081407
 GameObject:
   m_ObjectHideFlags: 0

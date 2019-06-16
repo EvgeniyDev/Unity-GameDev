@@ -2,14 +2,18 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerStats : MonoBehaviour
 {
+    public FirstPersonController playerController;
+
     public Inventory inventory;
     public CurrentWeaponSlot weaponSlot;
 
     public TMP_Text healthbarText;
     public Slider healthbarSlider;
+    public Slider staminaSlider;
     public Image damageFadeOut;
 
     public DeathScript deathScript;
@@ -20,23 +24,41 @@ public class PlayerStats : MonoBehaviour
     int maxHealth;
     int currentHealth;
 
+    int maxStamina;
+    [HideInInspector]
+    public int currentStamina;
+
     bool isRegenerating;
+    bool isRelaxing;
 
     void Start()
     {
         damage = 0;
+
         maxHealth = 100;
         currentHealth = maxHealth;
         healthbarSlider.maxValue = maxHealth;
         healthbarSlider.value = currentHealth;
+
+        maxStamina = 2000;
+        currentStamina = maxStamina;
+        staminaSlider.maxValue = maxStamina;
+        staminaSlider.value = currentStamina;
     }
 
     void Update()
     {
         WeaponDamageUpdate();
 
-        CurrentHealthDisplay();
-        Regeneration();
+        CurrentStatsDisplay();
+
+        HealthRegeneration();
+        StaminaRegeneration();                        
+    }
+
+    void FixedUpdate()
+    {
+        StaminaReduce();
     }
 
     void WeaponDamageUpdate()
@@ -65,18 +87,47 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    void CurrentHealthDisplay()
+    void CurrentStatsDisplay()
     {
         healthbarSlider.value = currentHealth;
         healthbarText.text = currentHealth + "/" + maxHealth;
+
+        staminaSlider.value = currentStamina;
     }
 
-    void Regeneration()
+    void StaminaReduce()
+    {
+        if (!playerController.m_IsWalking)
+        {
+            if (currentStamina <= maxStamina && currentStamina >= 1
+                && Time.timeScale != 0
+                && playerController.m_MoveDir.x != 0 || playerController.m_MoveDir.z != 0)
+            {
+                currentStamina -= 1;
+            }
+        }
+
+        if (currentStamina < 0)
+        {
+            currentStamina = 0;
+        }
+    }
+
+    void HealthRegeneration()
     {
         if (currentHealth < maxHealth && !isRegenerating && Time.timeScale != 0 
             && currentHealth >= 1)
         {
-            StartCoroutine(RegenerationDelay());
+            StartCoroutine(HealthRegenerationDelay());
+        }
+    }
+
+    void StaminaRegeneration()
+    {
+        if (currentStamina < maxStamina && !isRelaxing && Time.timeScale != 0
+            && currentStamina >= 0)
+        {
+            StartCoroutine(StaminaRegenerationDelay());
         }
     }
 
@@ -92,7 +143,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    IEnumerator RegenerationDelay()
+    IEnumerator HealthRegenerationDelay()
     {
         isRegenerating = true;
 
@@ -100,5 +151,15 @@ public class PlayerStats : MonoBehaviour
         currentHealth += 1;
 
         isRegenerating = false;
+    }
+
+    IEnumerator StaminaRegenerationDelay()
+    {
+        isRelaxing = true;
+
+        yield return new WaitForSeconds(0.05f);
+        currentStamina += 1;
+
+        isRelaxing = false;
     }
 }

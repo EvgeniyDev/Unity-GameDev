@@ -946,6 +946,7 @@ MonoBehaviour:
   healthbar: {fileID: 3262848050102087894}
   maxHealth: 150
   damage: 50
+  drop: {fileID: 8058496614581086561, guid: 3cdf4d3dbc6c10941818a4c3b1629d86, type: 3}
 --- !u!114 &3262848051228858633
 MonoBehaviour:
   m_ObjectHideFlags: 0

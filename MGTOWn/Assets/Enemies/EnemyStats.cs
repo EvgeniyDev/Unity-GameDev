@@ -7,6 +7,8 @@ public class EnemyStats : MonoBehaviour
     public int maxHealth;
     public int damage;
 
+    public GameObject drop;
+
     int currentHealth;
 
     Slider healthbarSlider;
@@ -42,8 +44,13 @@ public class EnemyStats : MonoBehaviour
 
     void Die()
     {
+        GameObject tempDrop = Instantiate(drop as GameObject);
+
+        tempDrop.SetActive(false);
+        tempDrop.transform.position = gameObject.transform.position;
+
         Destroy(gameObject);
 
-        //Instantiate();
+        tempDrop.SetActive(true);
     }
 }
