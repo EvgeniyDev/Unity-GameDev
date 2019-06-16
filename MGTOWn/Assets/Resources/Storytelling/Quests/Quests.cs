@@ -6,14 +6,22 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 class Quests : MonoBehaviour
 {
+    protected int questId;
+    protected int subQuestId;
+
+    //protected bool isInQuest;
+    protected bool isTextPrinted;
+
     string connection;
     protected IDbConnection dbcon;
     protected IDbCommand cmnd_read;
     protected IDataReader reader;
     protected string query;
 
+    public GameObject fps;
+    public GameObject currentQuestMinimapSign;
+
     Text longText;
-    GameObject fps;
     GameObject UI_Player;
     GameObject UI_PauseMenu;
     GameObject scenarioLayout;
@@ -21,7 +29,6 @@ class Quests : MonoBehaviour
     GameObject UI_Dialog;
 
     public enum LayoutUI { Author, Dialog, NULL }
-
 
     public void DisableFPS()
     {
@@ -101,9 +108,23 @@ class Quests : MonoBehaviour
         }
     }
 
+    public void CurrentQuestSignEnable()
+    {
+        currentQuestMinimapSign.SetActive(true);
+    }
+
+    public void CurrentQuestSignDisable()
+    {
+        currentQuestMinimapSign.SetActive(false);
+    }
+
+    public void SetCurrentQuestSignPosition(float x, float y)
+    {
+        currentQuestMinimapSign.transform.localPosition = new Vector3(x, y, 3);
+    }
+
     public virtual void Start()
     {
-        fps = GameObject.FindGameObjectWithTag("Player");
         UI_Player = fps.transform.GetChild(2).gameObject;
         UI_PauseMenu = fps.transform.GetChild(3).gameObject;
 

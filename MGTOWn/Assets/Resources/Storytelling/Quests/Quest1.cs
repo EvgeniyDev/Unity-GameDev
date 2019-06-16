@@ -3,57 +3,84 @@ using System.Collections;
 
 class Quest1 : Quests
 {
-	private bool flag = false;
-
+    public GameObject Melory;
+    
     public override void Start()
     {
         base.Start();
 
-        //Debug.Log ("Quest 1");
+        questId = 0;
+        subQuestId = 0;
 
-		Vstuplenie (); 
-
-        //dbcon.Close();
+        CurrentQuestSignDisable();
     }
 		
-    public void Update()
+    void Update()
     {
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			ActiveScenarioLayout (false, LayoutUI.NULL);
-			Q1 ();
-		}
-
+        if (subQuestId == 0) Vstuplenie();
+        if (subQuestId == 1) Q1();
+        if (subQuestId == 2) MeloryDialog1();
     }
 
-	public void Vstuplenie()
-	{
-		ActiveScenarioLayout(true, LayoutUI.Author);
+    public void Vstuplenie()
+    {
+        if (!isTextPrinted)
+        {
+            ActiveScenarioLayout(true, LayoutUI.Author);
 
-		query = "SELECT * FROM Phrases WHERE id_quest = 0;";
-		cmnd_read.CommandText = query;
-		reader = cmnd_read.ExecuteReader();
+            query = "SELECT * FROM Phrases WHERE id_quest = 0;";
+            cmnd_read.CommandText = query;
+            reader = cmnd_read.ExecuteReader();
 
-		while (reader.Read())
-			SetLongAuthorText(reader[2].ToString());
-		
-		reader.Close ();
-	}
+            while (reader.Read())
+                SetLongAuthorText(reader[2].ToString());
 
-	public void Q1()
-	{
-		ClearLongAuthorText ();
+            reader.Close();
 
-		ActiveScenarioLayout(true, LayoutUI.Author);
+            isTextPrinted = true;
+        }
 
-		query = "SELECT * FROM Phrases WHERE id_quest = 1;";
-		cmnd_read.CommandText = query;
-		reader = cmnd_read.ExecuteReader();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            subQuestId = 1;
+            isTextPrinted = false;
+        }
+    }
 
-		while (reader.Read ())
-			SetLongAuthorText (reader[2].ToString());
-	}
+    public void Q1()
+    {
+        if (!isTextPrinted)
+        {
+            ClearLongAuthorText();
 
-	IEnumerator Wait(){
-		yield return new WaitForSeconds (5);
-	}
+            ActiveScenarioLayout(true, LayoutUI.Author);
+
+            query = "SELECT * FROM Phrases WHERE id_quest = 1;";
+            cmnd_read.CommandText = query;
+            reader = cmnd_read.ExecuteReader();
+
+            while (reader.Read())
+                SetLongAuthorText(reader[2].ToString());
+
+            reader.Close();
+
+            isTextPrinted = true;
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            subQuestId = 2;
+
+            ActiveScenarioLayout(false, LayoutUI.NULL);
+
+            SetCurrentQuestSignPosition(2.6f, 1.45f);
+            CurrentQuestSignEnable();
+        }
+    }
+
+    public void MeloryDialog1()
+    {
+
+    }
 }
