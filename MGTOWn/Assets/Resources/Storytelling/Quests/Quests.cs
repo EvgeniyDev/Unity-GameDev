@@ -6,12 +6,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 class Quests : MonoBehaviour
 {
-    protected int questId;
-    protected int subQuestId;
-
-    //protected bool isInQuest;
-    protected bool isTextPrinted;
-
     string connection;
     protected IDbConnection dbcon;
     protected IDbCommand cmnd_read;
@@ -22,11 +16,12 @@ class Quests : MonoBehaviour
     public GameObject currentQuestMinimapSign;
 
     Text longText;
-    GameObject UI_Player;
+    protected GameObject UI_Player;
     GameObject UI_PauseMenu;
     GameObject scenarioLayout;
     GameObject UI_Author;
-    GameObject UI_Dialog;
+    public GameObject UI_Dialog;
+	Text questText;
 
     public enum LayoutUI { Author, Dialog, NULL }
 
@@ -130,8 +125,8 @@ class Quests : MonoBehaviour
 
         scenarioLayout = fps.transform.GetChild(4).gameObject;
         UI_Author = scenarioLayout.transform.GetChild(0).gameObject;
-        UI_Dialog = scenarioLayout.transform.GetChild(1).gameObject;
 
+		questText = GameObject.FindGameObjectWithTag ("Quest").GetComponent<Text>();
         longText = UI_Author.transform.GetChild(1).transform.GetChild(0)
                     .transform.GetChild(0).GetComponent<Text>();
 
@@ -141,6 +136,11 @@ class Quests : MonoBehaviour
         dbcon.Open();
         cmnd_read = dbcon.CreateCommand();
     }
+
+	public void setQuestText(string text){
+		questText.text = text;
+	}
+		
 }
 
 

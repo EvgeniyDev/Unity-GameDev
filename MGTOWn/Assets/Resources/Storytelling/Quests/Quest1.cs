@@ -1,86 +1,94 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 class Quest1 : Quests
 {
-    public GameObject Melory;
+	private bool vstup = true;
+	private bool text1 = false;
     
+	private Vector3 rayOrigin;
+	private RaycastHit hit;
+	private Ray ray;
+
+	Text saying;
+	Text sayingText;
+
     public override void Start()
     {
         base.Start();
 
-        questId = 0;
-        subQuestId = 0;
-
-        CurrentQuestSignDisable();
+		Vstuplenie (); 
     }
 		
-    void Update()
-    {
-        if (subQuestId == 0) Vstuplenie();
-        if (subQuestId == 1) Q1();
-        if (subQuestId == 2) MeloryDialog1();
-    }
+	public void Update()
+	{
+		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape)) {
+			if (vstup){
+				vstup = false;
+				text1 = true;
+				ActiveScenarioLayout (false, LayoutUI.NULL);
+				Q1 ();
+				return;
+			}
+			if (text1) {
+				text1 = false;
+				ActiveScenarioLayout (false, LayoutUI.NULL);
+				return;
+			}
+		}
 
-    public void Vstuplenie()
-    {
-        if (!isTextPrinted)
-        {
-            ActiveScenarioLayout(true, LayoutUI.Author);
+		if (Input.GetKeyDown (KeyCode.E)) {
+			rayOrigin = new Vector3(0.5f, 0.5f, 0f); // center of the screen
+			ray = Camera.main.ViewportPointToRay (rayOrigin);
+			if (Physics.Raycast (ray, out hit, 10f)) {
+				if (hit.collider.CompareTag("Melory"))
+					MeloryDialog ();
+			}
+		}
+	}
 
-            query = "SELECT * FROM Phrases WHERE id_quest = 0;";
-            cmnd_read.CommandText = query;
-            reader = cmnd_read.ExecuteReader();
+	public void Vstuplenie()
+	{
+		ActiveScenarioLayout(true, LayoutUI.Author);
 
-            while (reader.Read())
-                SetLongAuthorText(reader[2].ToString());
+		query = "SELECT * FROM Phrases WHERE id_quest = 0;";
+		cmnd_read.CommandText = query;
+		reader = cmnd_read.ExecuteReader();
 
-            reader.Close();
+		while (reader.Read())
+			SetLongAuthorText(reader[2].ToString());
 
-            isTextPrinted = true;
-        }
+		reader.Close ();
+	}
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            subQuestId = 1;
-            isTextPrinted = false;
-        }
-    }
+	public void Q1()
+	{
+		ClearLongAuthorText ();
 
-    public void Q1()
-    {
-        if (!isTextPrinted)
-        {
-            ClearLongAuthorText();
+		ActiveScenarioLayout(true, LayoutUI.Author);
 
-            ActiveScenarioLayout(true, LayoutUI.Author);
+		query = "SELECT * FROM Phrases WHERE id_quest = 1;";
+		cmnd_read.CommandText = query;
+		reader = cmnd_read.ExecuteReader();
 
-            query = "SELECT * FROM Phrases WHERE id_quest = 1;";
-            cmnd_read.CommandText = query;
-            reader = cmnd_read.ExecuteReader();
+		while (reader.Read ())
+			SetLongAuthorText (reader[2].ToString());
 
-            while (reader.Read())
-                SetLongAuthorText(reader[2].ToString());
+		setQuestText ("Прийти в город Gynon к Мелори для получения задания.");
 
-            reader.Close();
+		GameObject Melory = GameObject.FindGameObjectWithTag ("Melory");
+		Melory.SetActive (true);
+	}
 
-            isTextPrinted = true;
-        }
+	public void MeloryDialog(){
+		UI_Player.SetActive (false);
+		UI_Dialog.SetActive (true);
 
+		saying = GameObject.FindGameObjectWithTag ("Saying").GetComponent<Text>();
+		sayingText = GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text>();
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            subQuestId = 2;
-
-            ActiveScenarioLayout(false, LayoutUI.NULL);
-
-            SetCurrentQuestSignPosition(2.6f, 1.45f);
-            CurrentQuestSignEnable();
-        }
-    }
-
-    public void MeloryDialog1()
-    {
-
-    }
+		saying.text = "Мэлори";
+		sayingText.text = "Ты заставил меня ждать!";
+	}
 }

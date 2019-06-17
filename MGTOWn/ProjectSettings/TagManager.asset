@@ -9,6 +9,11 @@ TagManager:
   - Poster
   - Chest
   - Weapon
+  - Saying
+  - Saying text
+  - Melory
+  - Dialog
+  - Quest
   layers:
   - Default
   - TransparentFX
