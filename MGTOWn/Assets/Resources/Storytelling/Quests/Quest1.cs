@@ -23,25 +23,32 @@ class Quest1 : Quests
 		
 	public void Update()
 	{
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape)) {
-			if (vstup){
+		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape))
+        {
+			if (vstup)
+            {
 				vstup = false;
 				text1 = true;
 				ActiveScenarioLayout (false, LayoutUI.NULL);
 				Q1 ();
 				return;
 			}
-			if (text1) {
+
+			if (text1)
+            {
 				text1 = false;
 				ActiveScenarioLayout (false, LayoutUI.NULL);
 				return;
 			}
 		}
 
-		if (Input.GetKeyDown (KeyCode.E)) {
+		if (Input.GetKeyDown (KeyCode.E))
+        {
 			rayOrigin = new Vector3(0.5f, 0.5f, 0f); // center of the screen
 			ray = Camera.main.ViewportPointToRay (rayOrigin);
-			if (Physics.Raycast (ray, out hit, 10f)) {
+
+			if (Physics.Raycast (ray, out hit, 10f))
+            {
 				if (hit.collider.CompareTag("Melory"))
 					MeloryDialog ();
 			}
@@ -81,7 +88,8 @@ class Quest1 : Quests
 		Melory.SetActive (true);
 	}
 
-	public void MeloryDialog(){
+	public void MeloryDialog()
+    {
 		UI_Player.SetActive (false);
 		UI_Dialog.SetActive (true);
 
@@ -89,6 +97,6 @@ class Quest1 : Quests
 		sayingText = GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text>();
 
 		saying.text = "Мэлори";
-		sayingText.text = "Ты заставил меня ждать!";
+		sayingText.text = "-Ты заставил меня ждать!";
 	}
 }

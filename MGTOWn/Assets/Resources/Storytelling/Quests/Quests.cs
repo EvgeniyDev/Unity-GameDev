@@ -16,12 +16,12 @@ class Quests : MonoBehaviour
     public GameObject currentQuestMinimapSign;
 
     Text longText;
+    Text questText;
     protected GameObject UI_Player;
     GameObject UI_PauseMenu;
     GameObject scenarioLayout;
     GameObject UI_Author;
     public GameObject UI_Dialog;
-	Text questText;
 
     public enum LayoutUI { Author, Dialog, NULL }
 
@@ -51,7 +51,8 @@ class Quests : MonoBehaviour
             longText.text += AuthorText[i];
     }
 
-	public void ClearLongAuthorText(){
+	public void ClearLongAuthorText()
+    {
 		longText.text = "";
 	}
 
@@ -126,7 +127,7 @@ class Quests : MonoBehaviour
         scenarioLayout = fps.transform.GetChild(4).gameObject;
         UI_Author = scenarioLayout.transform.GetChild(0).gameObject;
 
-		questText = GameObject.FindGameObjectWithTag ("Quest").GetComponent<Text>();
+		questText = UI_PauseMenu.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
         longText = UI_Author.transform.GetChild(1).transform.GetChild(0)
                     .transform.GetChild(0).GetComponent<Text>();
 
@@ -137,10 +138,10 @@ class Quests : MonoBehaviour
         cmnd_read = dbcon.CreateCommand();
     }
 
-	public void setQuestText(string text){
+	public void setQuestText(string text)
+    {
 		questText.text = text;
-	}
-		
+	}		
 }
 
 
