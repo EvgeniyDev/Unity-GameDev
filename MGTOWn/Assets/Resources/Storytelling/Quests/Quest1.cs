@@ -11,8 +11,9 @@ class Quest1 : Quests
 	private RaycastHit hit;
 	private Ray ray;
 
-	Text saying;
-	Text sayingText;
+	protected Text saying;
+	protected Text sayingText;
+	protected Button next;
 
     public override void Start()
     {
@@ -47,10 +48,25 @@ class Quest1 : Quests
 			rayOrigin = new Vector3(0.5f, 0.5f, 0f); // center of the screen
 			ray = Camera.main.ViewportPointToRay (rayOrigin);
 
-			if (Physics.Raycast (ray, out hit, 10f))
-            {
-				if (hit.collider.CompareTag("Melory"))
-					MeloryDialog ();
+			if (Physics.Raycast (ray, out hit, 10f)) {
+				if (hit.collider.CompareTag ("Melory")) {
+					UI_Player.SetActive (false);
+					UI_Dialog.SetActive (true);
+
+					Cursor.lockState = CursorLockMode.None;
+					Cursor.visible = true;
+					DisableFPS ();
+
+					saying = GameObject.FindGameObjectWithTag ("Saying").GetComponent<Text>();
+					sayingText = GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text>();
+					next = GameObject.FindGameObjectWithTag ("Next").GetComponent<Button>();
+
+					saying.text = "Mэлори";
+					sayingText.text = "Ты заставил меня ждать!";
+				}
+				if (hit.collider.CompareTag ("Rose")) {
+					setQuestText ("Отдать розу Мэлори.");
+				}
 			}
 		}
 	}
@@ -68,7 +84,7 @@ class Quest1 : Quests
 
 		reader.Close ();
 	}
-
+		
 	public void Q1()
 	{
 		ClearLongAuthorText ();
@@ -82,21 +98,20 @@ class Quest1 : Quests
 		while (reader.Read ())
 			SetLongAuthorText (reader[2].ToString());
 
+		reader.Close ();
+
 		setQuestText ("Прийти в город Gynon к Мелори для получения задания.");
 
-		GameObject Melory = GameObject.FindGameObjectWithTag ("Melory");
-		Melory.SetActive (true);
+		GameObject.FindGameObjectWithTag ("Melory").SetActive (true);
 	}
 
-	public void MeloryDialog()
-    {
-		UI_Player.SetActive (false);
-		UI_Dialog.SetActive (true);
-
-		saying = GameObject.FindGameObjectWithTag ("Saying").GetComponent<Text>();
-		sayingText = GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text>();
-
-		saying.text = "Мэлори";
-		sayingText.text = "-Ты заставил меня ждать!";
+	public void EndMeloryDialog(){
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+		EnableFPS ();
+		UI_Player.SetActive (true);
+		UI_Dialog.SetActive (false);
+		GameObject.FindGameObjectWithTag ("Melory").SetActive (false);
 	}
+
 }

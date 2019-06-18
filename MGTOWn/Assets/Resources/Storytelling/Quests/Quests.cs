@@ -16,7 +16,7 @@ class Quests : MonoBehaviour
     public GameObject currentQuestMinimapSign;
 
     Text longText;
-    Text questText;
+    protected Text questText;
     protected GameObject UI_Player;
     GameObject UI_PauseMenu;
     GameObject scenarioLayout;
@@ -141,7 +141,7 @@ class Quests : MonoBehaviour
 	public void setQuestText(string text)
     {
 		questText.text = text;
-	}		
+	}
 }
 
 
