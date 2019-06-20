@@ -21,8 +21,10 @@ public class PlayerStats : MonoBehaviour
     [HideInInspector]
     public int damage;
 
-    int maxHealth;
-    int currentHealth;
+    [HideInInspector]
+    public int maxHealth;
+    [HideInInspector]
+    public int currentHealth;
 
     int maxStamina;
     [HideInInspector]

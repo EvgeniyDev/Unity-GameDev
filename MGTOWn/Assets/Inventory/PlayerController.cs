@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         if (inventory.items[weaponSlot.weaponSlotIndex].id != 0)
         {
-            weaponImage.sprite = inventory.items[weaponSlot.weaponSlotIndex].icon;
+            weaponImage.sprite = Resources.Load<Sprite>(inventory.items[weaponSlot.weaponSlotIndex].icon);
             weaponImageObject.SetActive(true);
             weaponDamage.text = (inventory.items[weaponSlot.weaponSlotIndex] as WeaponItem).baseDamage.ToString();
 

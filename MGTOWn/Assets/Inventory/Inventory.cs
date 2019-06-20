@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 //using UnityEditor.VersionControl;
-using System.Timers;
+//using System.Timers;
 using System.Collections;
 
 
@@ -21,15 +21,13 @@ public class Inventory : MonoBehaviour
     public GameObject tooltipObject;
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemDescription;
-	public Text text;
-	public Image textBox;
+	public GameObject pickupMessage;
 
     void Awake()
     {
         tooltipObject.SetActive(false);
 
-        textBox.enabled = false;
-        text.enabled = false;
+        pickupMessage.SetActive(false);
     }
 
     void Start()
@@ -62,9 +60,43 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void AddItem(Item currentItem)
+    public Item LoadItem(int itemId, int itemAmount, bool itemIsStackable,
+        string itemName, string itemDescription, string itemPrefab, string itemIcon,
+        int itemDamage)
+    {
+        Item tempItem;
+
+        if (itemId == 0)
+        {
+            return new Item();
+        }
+
+        if (itemId >= 1 && itemId <= 5)
+        {
+            tempItem = new WeaponItem();
+            (tempItem as WeaponItem).baseDamage = itemDamage;
+        }
+        else
+        {
+            tempItem = new Item();
+        }
+
+        tempItem.id = itemId;
+        tempItem.itemAmount = itemAmount;
+        tempItem.isStackable = itemIsStackable;
+        tempItem.itemName = itemName;
+        tempItem.description = itemDescription;
+        tempItem.prefab = itemPrefab;
+        tempItem.icon = itemIcon;
+
+        return tempItem;
+
+    }
+
+    public void AddItem(Item currentItem)
     {
 		ShowMessage (currentItem.itemName);
+
         if (currentItem.isStackable)
         {
             AddStackable(currentItem);
@@ -121,7 +153,7 @@ public class Inventory : MonoBehaviour
             if (items[i].id != 0)
             {
                 image.enabled = true;
-                image.sprite = items[i].icon;
+                image.sprite = Resources.Load<Sprite>(items[i].icon);
 
                 if (items[i].itemAmount > 1)
                 {
@@ -140,25 +172,27 @@ public class Inventory : MonoBehaviour
     }
 
 
-	Timer t;
-	bool stopT;
+	//Timer t;
+	//bool stopT;
 
-	void ShowMessage(string msg){
-		
+	void ShowMessage(string msg)
+    {
 		try { // Clear output
 			msg = msg.Substring (0, msg.IndexOf ("("));
-		} catch (Exception){ }
+		}
+        catch (Exception){ }
 
-        text.text = "Added: " + msg;
+        pickupMessage.SetActive(true);
+        pickupMessage.GetComponent<Text>().text = "Added: " + msg;   
 
-		text.enabled = true;
-		textBox.enabled = true;
 		StartCoroutine (Wait ());
 	}
 
-	IEnumerator Wait(){
+	IEnumerator Wait()
+    {
 		yield return new WaitForSeconds(5);
-		text.enabled = false;
-		textBox.enabled = false;
-	}
+
+        pickupMessage.SetActive(false);
+        pickupMessage.GetComponent<Text>().text = string.Empty;
+    }
 }

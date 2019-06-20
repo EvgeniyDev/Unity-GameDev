@@ -130,7 +130,7 @@ MonoBehaviour:
   description: 
   itemAmount: 0
   isStackable: 0
-  icon: {fileID: 21300000, guid: a0d11cad130b36a42bceabbfaceca9d3, type: 3}
+  icon: Weapons/Icons/sword
   prefab: Weapons/Prefabs/Sword
   baseDamage: 30
 --- !u!114 &7295066610478997787

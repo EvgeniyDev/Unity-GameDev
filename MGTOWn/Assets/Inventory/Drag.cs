@@ -23,7 +23,7 @@ public class Drag : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHand
         {
             int index = draggedObject.GetComponent<CurrentItem>().index;
 
-            inventory.dragPrefab.GetComponent<Image>().sprite = inventory.items[index].icon;
+            inventory.dragPrefab.GetComponent<Image>().sprite = Resources.Load<Sprite>(inventory.items[index].icon);
 
             if (inventory.dragPrefab.GetComponent<Image>().sprite == null)
             {

@@ -128,7 +128,7 @@ MonoBehaviour:
   description: Axe attacks!
   itemAmount: 0
   isStackable: 0
-  icon: {fileID: 21300000, guid: 1f742029bac22ab4592057a66d9df71d, type: 3}
+  icon: Weapons/Icons/axe
   prefab: Weapons/Prefabs/Axe
   baseDamage: 50
 --- !u!114 &193366235175162283

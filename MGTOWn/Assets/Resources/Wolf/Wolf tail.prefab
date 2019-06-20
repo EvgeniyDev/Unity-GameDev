@@ -128,7 +128,7 @@ MonoBehaviour:
   description: Drops from wolf
   itemAmount: 0
   isStackable: 1
-  icon: {fileID: 21300000, guid: 3a35a31ad5594c349ba27a511d7b8799, type: 3}
+  icon: Wolf/Wolf tail
   prefab: Wolf/Wolf tail
 --- !u!114 &5714872727333526269
 MonoBehaviour:

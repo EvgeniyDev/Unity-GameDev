@@ -64,7 +64,8 @@ class Quest1 : Quests
 					saying.text = "Mэлори";
 					sayingText.text = "Ты заставил меня ждать!";
 				}
-				if (hit.collider.CompareTag ("Rose")) {
+				if (hit.collider.CompareTag ("Rose"))
+                {
 					setQuestText ("Отдать розу Мэлори.");
 				}
 			}
@@ -112,6 +113,8 @@ class Quest1 : Quests
 		UI_Player.SetActive (true);
 		UI_Dialog.SetActive (false);
 		GameObject.FindGameObjectWithTag ("Melory").SetActive (false);
+
+
 	}
 
 }

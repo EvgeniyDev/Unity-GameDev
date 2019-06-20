@@ -59,14 +59,8 @@ public class PauseMenuScript : MonoBehaviour
         weaponSlot.isOver = false;
     }
 
-    public void SaveGame()
-    {
-		
-    }
-
     public void BackToMainMenu()
     {
-        SaveGame();
         SceneManager.LoadScene(0);
     }
 }

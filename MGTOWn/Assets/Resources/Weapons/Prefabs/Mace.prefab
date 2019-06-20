@@ -128,7 +128,7 @@ MonoBehaviour:
   description: 
   itemAmount: 0
   isStackable: 0
-  icon: {fileID: 21300000, guid: 418b53df5e68650409184680f9dea265, type: 3}
+  icon: Weapons/Icons/bulava
   prefab: Weapons/Prefabs/Mace
   baseDamage: 15
 --- !u!114 &6420798068911619859

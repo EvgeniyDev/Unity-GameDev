@@ -128,7 +128,7 @@ MonoBehaviour:
   description: Actually don't know what it is...
   itemAmount: 0
   isStackable: 0
-  icon: {fileID: 21300000, guid: 65a1f336df5cd724681727b5a96e346e, type: 3}
+  icon: Weapons/Icons/weapon5
   prefab: "Weapons/Prefabs/Weapon \u21165"
   baseDamage: 20
 --- !u!114 &4868215848976247747

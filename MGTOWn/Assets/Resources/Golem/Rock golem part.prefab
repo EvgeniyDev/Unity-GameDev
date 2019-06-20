@@ -143,5 +143,5 @@ MonoBehaviour:
 '
   itemAmount: 0
   isStackable: 1
-  icon: {fileID: 21300000, guid: 8ac873cd8cf2d594f8335b1588719df7, type: 3}
+  icon: Golem/Rock golem part
   prefab: Golem/Rock golem part

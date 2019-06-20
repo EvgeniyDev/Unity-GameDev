@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 class HouseInForestTrigger : Quest1
@@ -22,7 +20,8 @@ class HouseInForestTrigger : Quest1
 		}
 	}
 
-	void Update(){
+	void Update()
+    {
 		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape))
 			ActiveScenarioLayout (false, LayoutUI.NULL);
 	}

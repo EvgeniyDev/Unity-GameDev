@@ -13,6 +13,7 @@ public class Item : MonoBehaviour
     public int itemAmount;
 
     public bool isStackable;
-    public Sprite icon;
+    public string icon;
     public string prefab;
+
 }

@@ -10,17 +10,27 @@ public class Options : MonoBehaviour
     public Dropdown resolutionDropdown;
     Resolution[] resolutions;
 
-    void Start()
+    void Awake()
     {
-        resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
+
+        resolutions = Screen.resolutions;
         List<string> options = new List<string>();
         int currentResIndex = 0;
 
+        int lw = -1;
+        int lh = -1;
+
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
+            if (lw != resolutions[i].width && lh != resolutions[i].height)
+            {
+                var option = resolutions[i].width + " x " + resolutions[i].height;
+                options.Add(option);
+
+                lw = resolutions[i].width;
+                lh = resolutions[i].height;
+            }
 
             if (resolutions[i].width == Screen.width &&
                 resolutions[i].height == Screen.height)
