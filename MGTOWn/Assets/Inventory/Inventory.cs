@@ -28,10 +28,7 @@ public class Inventory : MonoBehaviour
         tooltipObject.SetActive(false);
 
         pickupMessage.SetActive(false);
-    }
 
-    void Start()
-    {
         items = new List<Item>();
 
         for (int i = 0; i < cellContainer.transform.childCount; i++)
@@ -42,7 +39,8 @@ public class Inventory : MonoBehaviour
     }
 
 
-    void Update()
+
+        void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -90,7 +88,6 @@ public class Inventory : MonoBehaviour
         tempItem.icon = itemIcon;
 
         return tempItem;
-
     }
 
     public void AddItem(Item currentItem)

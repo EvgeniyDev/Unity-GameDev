@@ -40,8 +40,6 @@ public class SaveManager : MonoBehaviour
 
         for (int i = 0; i < inventory.cellContainer.transform.childCount; i++)
         {
-            Debug.Log(data.itemsDamage[i]);
-
             inventory.items[i] = inventory.LoadItem(
                                     data.itemsId[i], data.itemsAmount[i], data.itemsIsStakable[i],
                                     data.itemsName[i], data.itemsDescription[i], data.itemsPrefab[i],
