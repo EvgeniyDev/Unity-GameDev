@@ -31,13 +31,13 @@ class ButtonHandler : Quest1
 			//ToDo sign transform //currentQuestMinimapSign.transform.position = new Vector3 (385, -384, 496);
 			EndMeloryDialog ();
 			break;
-		case 6:
+		case 5:
 			Say ("Вы", "Я выполнил Ваше задание, Мэлори. Держите розу.");
 			break;
-		case 7:
+		case 6:
 			Say ("Мэлори", "А она мне уже не нужна. Оставь себе. Приходи завтра м получишь новое задание.");
 			break;
-		case 8:
+		case 7:
 			setQuestText ("Идти домой спать.");
 			//ToDo sign transform //currentQuestMinimapSign.transform.position = new Vector3 (385, -384, 496);
 			EndMeloryDialog ();
