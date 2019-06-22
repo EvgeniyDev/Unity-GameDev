@@ -4,11 +4,16 @@ using UnityEngine;
 
 class MyHome : Quest1
 {
-	void OnTriggerEnter(){
+	void OnTriggerEnter()
+    {
 		if (getQuestText () == "Идти домой спать.") {
 			EnableAuthor_UI ();
 			ClearLongAuthorText ();
 			SetLongAuthorText ("День 1 закончен.");
+
+            CurrentQuestSignDisable();
+
+            
 		}
 	}
 }

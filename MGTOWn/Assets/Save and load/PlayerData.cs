@@ -17,6 +17,9 @@ public class PlayerData
     public bool[] itemsIsStakable;
     public string[] itemsSprites;
 
+    public int questId;
+    public int subQuestId;
+
     public PlayerData(PlayerStats player, GameObject playerInstance, Inventory inventory)
     {
         int slotsAmount = inventory.cellContainer.transform.childCount;
@@ -53,5 +56,8 @@ public class PlayerData
         position[0] = playerInstance.transform.position.x;
         position[1] = playerInstance.transform.position.y;
         position[2] = playerInstance.transform.position.z;
+
+        questId = Quests.questId;
+        subQuestId = Quests.subQuestId;
     }
 }

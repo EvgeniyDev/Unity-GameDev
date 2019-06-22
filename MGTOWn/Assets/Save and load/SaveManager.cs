@@ -21,6 +21,8 @@ public class SaveManager : MonoBehaviour
         inventory = inventoryHolder.GetComponent<Inventory>();
 
         SaveLoadSystem.SaveGame(playerStats, gameObject, inventory);
+
+        Debug.Log(Quests.questId + " " + Quests.subQuestId);
     }
 
     public void Load()
@@ -47,5 +49,10 @@ public class SaveManager : MonoBehaviour
         }
 
         inventory.DisplayItems();
+
+        Quests.questId = data.questId;
+        Quests.subQuestId = data.subQuestId;
+
+        Debug.Log(data.questId + " " +data.subQuestId);
     }
 }

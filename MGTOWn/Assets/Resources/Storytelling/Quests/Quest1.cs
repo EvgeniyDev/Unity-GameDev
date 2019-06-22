@@ -6,11 +6,11 @@ using System;
 class Quest1 : Quests
 {
 	protected bool vstup = true, text1 = false, goSleep = false;
-	private bool meloryDialog1 = false, meloryDialog2 = false;
+	bool meloryDialog1 = false, meloryDialog2 = false;
     
-	private Vector3 rayOrigin;
-	private RaycastHit hit;
-	private Ray ray;
+	Vector3 rayOrigin;
+	RaycastHit hit;
+	Ray ray;
 
 	protected Text saying;
 	protected Text sayingText;
@@ -20,15 +20,20 @@ class Quest1 : Quests
     {
         base.Start();
 
-		DisableDialog_UI ();
-		EnableAuthor_UI ();
-
-		Vstuplenie (); 
+        questId = 0;
+        DisableDialog_UI();
+        DisableAuthor_UI();
     }
 		
 	public void Update()
 	{
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape))
+        if (subQuestId == 0)
+        {
+            EnableAuthor_UI();
+            Vstuplenie();
+        }
+
+		if (subQuestId == 1 && (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape)))
         {
 			if (vstup)
             {
@@ -42,10 +47,17 @@ class Quest1 : Quests
             {
 				text1 = false;
 				DisableAuthor_UI ();
-				return;
+
+                subQuestId = 2;
+
+                return;
 			}
 		
-			try{ DisableAuthor_UI ();} catch(Exception){}
+			try
+            {
+                DisableAuthor_UI ();
+            }
+            catch (Exception){} 
 
 		}
 
@@ -54,8 +66,10 @@ class Quest1 : Quests
 			rayOrigin = new Vector3(0.5f, 0.5f, 0f); // center of the screen
 			ray = Camera.main.ViewportPointToRay (rayOrigin);
 
-			if (Physics.Raycast (ray, out hit, 10f)) {
-				if (hit.collider.CompareTag ("Melory")) {
+			if (Physics.Raycast (ray, out hit, 10f))
+            {
+				if (hit.collider.CompareTag ("Melory"))
+                {
 					EnableDialog_UI ();
 
 					Cursor.lockState = CursorLockMode.None;
@@ -66,29 +80,51 @@ class Quest1 : Quests
 					sayingText = GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text>();
 					next = GameObject.FindGameObjectWithTag ("Next").GetComponent<Button>();
 
-					if (meloryDialog1) {
+					if (subQuestId == 2 && meloryDialog1)
+                    {
 						meloryDialog1 = false;
 						saying.text = "Mэлори";
 						sayingText.text = "Ты заставил меня ждать!";
-						return;
-					} 
-					if (meloryDialog2) {
+
+                        subQuestId = 3;
+
+                        SetCurrentQuestSignPosition(9.5f, -9f);
+
+                        return;
+					}
+                    
+					if (subQuestId == 5 && meloryDialog2)
+                    {
 						meloryDialog2 = false;
 						saying.text = "Mэлори";
 						sayingText.text = "Я надеялась что больше не увижу тебя!";
+
+                        SetCurrentQuestSignPosition(-7.5f, 1.8f);
+
+                        subQuestId = 6;
+                        
 						return;
 					}
-						
-					saying.text = "Mэлори";
-					sayingText.text = "Выполняй мои задания, а не шляйся тут!";						
+
+                    if (subQuestId < 5 && !meloryDialog1)
+                    {
+                        saying.text = "Mэлори";
+                        sayingText.text = "Выполняй мои задания, а не шляйся тут!";
+                    }
 				}
-				if (hit.collider.CompareTag ("Rose"))
+
+				if (subQuestId == 4 && hit.collider.CompareTag ("Rose"))
                 {
 					setQuestText ("Отдать розу Мэлори.");
-					meloryDialog2 = true;
-				}
+                    SetCurrentQuestSignPosition(8.6f, 4.9f);
+
+                    meloryDialog2 = true;
+                    subQuestId = 5;
+                }
 			}
 		}
+
+        Debug.Log(questId + " " + subQuestId);
 	}
 
 	public void Vstuplenie()
@@ -113,8 +149,10 @@ class Quest1 : Quests
 			"пытаясь запомнить соответсвия. \n\nСпустя несколько месяцев я уже мог сам читат свиток.\n\nИменно так я и " +
 			"научился читать. Возможно первый мужчина, который это смог. Теперь, спустя годы тренировок чтения и письма, " +
 			"я начал писать свой дневник.\n");
-		
+
+        subQuestId = 1;
 	}
+		
 		
 	public void Q1()
 	{
@@ -124,14 +162,17 @@ class Quest1 : Quests
 
 		setQuestText ("Прийти в город Gynon к Мелори для получения задания.");
 
-		meloryDialog1 = true;
-	}
+        SetCurrentQuestSignPosition(8.6f, 4.9f);
 
-	public void EndMeloryDialog(){
+        meloryDialog1 = true;
+    }
+
+	public void EndMeloryDialog()
+    {
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		EnableFPS ();
 		DisableDialog_UI ();
-	}
+    }
 
 }

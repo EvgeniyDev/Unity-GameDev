@@ -9,8 +9,9 @@ class HouseInForestTrigger : Quest1
     }
 
 	bool flag = true;
-	void OnTriggerEnter(){
-		if (flag) {
+	void OnTriggerEnter()
+    {
+		if (flag && subQuestId == 3) {
 			flag = false;
 
 			EnableAuthor_UI ();
@@ -18,7 +19,9 @@ class HouseInForestTrigger : Quest1
 			ClearLongAuthorText ();
 			SetLongAuthorText ("Похоже тут кто-то живет, не знал что кроме Gynon`a и деревень тут еще есть дома.\n\n " +
 				"Еще вернусь сюда завтра.");
-		}
+
+            subQuestId = 4;
+        }
 		entered = true;
 	}
 
