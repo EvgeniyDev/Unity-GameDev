@@ -8,6 +8,11 @@ class ButtonHandler : Quest1
 	int counter = 0;
 	public void  MeloryDialog()
 	{
+		if (GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text> ().text == "Выполняй мои задания, а не шляйся тут!") {
+			EndMeloryDialog ();
+			return;
+		}
+			
 		switch (counter){
 		case 0:
 			Say ("Вы", "Простите, Мэлори.");
@@ -23,7 +28,23 @@ class ButtonHandler : Quest1
 			break;
 		case 4:
 			setQuestText ("Найти розу для Мэлори на краю леса.");
+			//ToDo sign transform //currentQuestMinimapSign.transform.position = new Vector3 (385, -384, 496);
 			EndMeloryDialog ();
+			break;
+		case 6:
+			Say ("Вы", "Я выполнил Ваше задание, Мэлори. Держите розу.");
+			break;
+		case 7:
+			Say ("Мэлори", "А она мне уже не нужна. Оставь себе. Приходи завтра м получишь новое задание.");
+			break;
+		case 8:
+			setQuestText ("Идти домой спать.");
+			//ToDo sign transform //currentQuestMinimapSign.transform.position = new Vector3 (385, -384, 496);
+			EndMeloryDialog ();
+			EnableAuthor_UI ();
+			ClearLongAuthorText ();
+			SetLongAuthorText ("Кажеться, я все сделал... Можно отправлять спать.");
+			goSleep = true;
 			break;
 		}
 		counter++;

@@ -6,12 +6,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 class Quests : MonoBehaviour
 {
-    string connection;
-    protected IDbConnection dbcon;
-    protected IDbCommand cmnd_read;
-    protected IDataReader reader;
-    protected string query;
-
     public GameObject fps;
     public GameObject currentQuestMinimapSign;
 
@@ -20,8 +14,8 @@ class Quests : MonoBehaviour
     protected GameObject UI_Player;
     GameObject UI_PauseMenu;
     GameObject scenarioLayout;
-    GameObject UI_Author;
-    public GameObject UI_Dialog;
+	protected Canvas UI_Author;
+    protected Canvas UI_Dialog;
 
     public enum LayoutUI { Author, Dialog, NULL }
 
@@ -56,11 +50,11 @@ class Quests : MonoBehaviour
 		longText.text = "";
 	}
 
+	/*
     public void ActiveScenarioLayout(bool flag, LayoutUI layoutType = LayoutUI.NULL)
     {
         // true - only scenario
         // false - disable scenario
-
         if (flag)
         {
             Time.timeScale = 0;
@@ -103,6 +97,51 @@ class Quests : MonoBehaviour
             UI_Dialog.SetActive(false);
         }
     }
+    */
+	public void EnableAuthor_UI(){
+		Time.timeScale = 0;
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+
+		UI_Player.SetActive (false);
+		DisablePauseMenu();
+		DisableFPS();
+
+		UI_Author.enabled = true;
+	}
+	public void DisableAuthor_UI(){
+		Time.timeScale = 1;
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+
+		UI_Player.SetActive (true);
+		EnableFPS();
+		EnablePauseMenu();
+
+		UI_Author.enabled = false;
+	}
+	public void EnableDialog_UI(){
+		Time.timeScale = 0;
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+
+		UI_Player.SetActive (false);
+		DisablePauseMenu();
+		DisableFPS();
+
+		UI_Dialog.enabled = true;
+	}
+	public void DisableDialog_UI(){
+		Time.timeScale = 1;
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+
+		UI_Player.SetActive (true);
+		EnableFPS();
+		EnablePauseMenu();
+
+		UI_Dialog.enabled = false;
+	}
 
     public void CurrentQuestSignEnable()
     {
@@ -124,23 +163,21 @@ class Quests : MonoBehaviour
         UI_Player = fps.transform.GetChild(2).gameObject;
         UI_PauseMenu = fps.transform.GetChild(3).gameObject;
 
-        scenarioLayout = fps.transform.GetChild(4).gameObject;
-        UI_Author = scenarioLayout.transform.GetChild(0).gameObject;
+		UI_Author = GameObject.FindGameObjectWithTag ("AuthorUI").GetComponent<Canvas>();
+		UI_Dialog = GameObject.FindGameObjectWithTag ("Dialog").GetComponent<Canvas>();
 
 		questText = UI_PauseMenu.transform.GetChild(2).transform.GetChild(0).transform.GetChild(0).GetComponent<Text>();
-        longText = UI_Author.transform.GetChild(1).transform.GetChild(0)
-                    .transform.GetChild(0).GetComponent<Text>();
 
-
-        connection = "URI=file:" + Application.dataPath + "/Resources/Storytelling/AllContent.db";
-        dbcon = new SqliteConnection(connection);
-        dbcon.Open();
-        cmnd_read = dbcon.CreateCommand();
-    }
+		longText = fps.transform.GetChild (4).transform.GetChild (0).transform.GetChild (1).transform.GetChild (0).transform.GetChild (0).GetComponent<Text> ();
+	}
 
 	public void setQuestText(string text)
     {
 		questText.text = text;
+	}
+
+	public string getQuestText(){
+		return questText.text;
 	}
 }
 

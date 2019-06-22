@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 
 class Quest1 : Quests
 {
-	private bool vstup = true;
-	private bool text1 = false;
+	protected bool vstup = true, text1 = false, goSleep = false;
+	private bool meloryDialog1 = false, meloryDialog2 = false;
     
 	private Vector3 rayOrigin;
 	private RaycastHit hit;
@@ -19,6 +20,9 @@ class Quest1 : Quests
     {
         base.Start();
 
+		DisableDialog_UI ();
+		EnableAuthor_UI ();
+
 		Vstuplenie (); 
     }
 		
@@ -30,7 +34,6 @@ class Quest1 : Quests
             {
 				vstup = false;
 				text1 = true;
-				ActiveScenarioLayout (false, LayoutUI.NULL);
 				Q1 ();
 				return;
 			}
@@ -38,9 +41,12 @@ class Quest1 : Quests
 			if (text1)
             {
 				text1 = false;
-				ActiveScenarioLayout (false, LayoutUI.NULL);
+				DisableAuthor_UI ();
 				return;
 			}
+		
+			try{ DisableAuthor_UI ();} catch(Exception){}
+
 		}
 
 		if (Input.GetKeyDown (KeyCode.E))
@@ -50,8 +56,7 @@ class Quest1 : Quests
 
 			if (Physics.Raycast (ray, out hit, 10f)) {
 				if (hit.collider.CompareTag ("Melory")) {
-					UI_Player.SetActive (false);
-					UI_Dialog.SetActive (true);
+					EnableDialog_UI ();
 
 					Cursor.lockState = CursorLockMode.None;
 					Cursor.visible = true;
@@ -61,12 +66,26 @@ class Quest1 : Quests
 					sayingText = GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text>();
 					next = GameObject.FindGameObjectWithTag ("Next").GetComponent<Button>();
 
+					if (meloryDialog1) {
+						meloryDialog1 = false;
+						saying.text = "Mэлори";
+						sayingText.text = "Ты заставил меня ждать!";
+						return;
+					} 
+					if (meloryDialog2) {
+						meloryDialog2 = false;
+						saying.text = "Mэлори";
+						sayingText.text = "Я надеялась что больше не увижу тебя!";
+						return;
+					}
+						
 					saying.text = "Mэлори";
-					sayingText.text = "Ты заставил меня ждать!";
+					sayingText.text = "Выполняй мои задания, а не шляйся тут!";						
 				}
 				if (hit.collider.CompareTag ("Rose"))
                 {
 					setQuestText ("Отдать розу Мэлори.");
+					meloryDialog2 = true;
 				}
 			}
 		}
@@ -74,47 +93,45 @@ class Quest1 : Quests
 
 	public void Vstuplenie()
 	{
-		ActiveScenarioLayout(true, LayoutUI.Author);
-
-		query = "SELECT * FROM Phrases WHERE id_quest = 0;";
-		cmnd_read.CommandText = query;
-		reader = cmnd_read.ExecuteReader();
-
-		while (reader.Read())
-			SetLongAuthorText(reader[2].ToString());
-
-		reader.Close ();
+		SetLongAuthorText("Для начала хочется поведать читающему о том, каким образом я научился писать" +
+			" и почему моя жизнь отличается от жизни остальных мужчин.\n\nБыл холодный вечер января 1443 года." +
+			" В дом постучали. Неспешно подойдя к двери, я услышал голос, очень хриплый голос, и открыл дверь. " +
+			"На пороге стоял старец, в его руках был клочек бумаги с каким-то текстом. Что происходит? Никогда " +
+			"ранее я не видел чтоб мужчинам было разрешено прикасаться к рукописям, мы же все равно не умеем читать. " +
+			"Куда бежать? Кому докладывать? Рядом не было ни одной женщины. Заметив мою панику, старец сказал:\n\n" +
+			"-Наконец-то я нашел молодого мужчину. Держи этот свиток, с его помощью ты найдешь ответы на все окружающие " +
+			"тебя загадки и сможешь избавить мир от несправедливости. К сожалению, мне осталось совсем мало времени, " +
+			"береги этот свиток, его название - \"Права и обязанности\", научись читать с его помощью.\n\nЗакончив " +
+			"говорить, старец вышел из дома и растворился в темноте ночи.\n\n*\n\nКаждый день на главной площади " +
+			"Gynon'а было торжественное чтение \"Прав и обязанностей\". Этот документ был сформирован еще сотни " +
+			"лет назад и с тех пор в нем ничего не изменилось. В первой строке были написаны права женщин, а после - " +
+			"обязанности мужчин. Каждый в городе напамять помнит эти слова \"Женщина имеет право делать все что она хочет. " +
+			"Мужчины обязаны выполнять все желания женщин. Мужчины обязаны быть добрыми по отношению к женщинам. Если женщине " +
+			"плохо, мужчина обязан страдать вдвойне...\" Далее идет еще много подобных пунктов, но я не считаю нужным " +
+			"перечислять их все тут.\n\nТам, на главной площади, спрятавшись за сеном, я слушал чтение \"Прав и обязанностей\"" +
+			", внимательно разглядывая слова в том свитке, что дал мне старец. Я начал сопоставлять звуки с буквами, " +
+			"пытаясь запомнить соответсвия. \n\nСпустя несколько месяцев я уже мог сам читат свиток.\n\nИменно так я и " +
+			"научился читать. Возможно первый мужчина, который это смог. Теперь, спустя годы тренировок чтения и письма, " +
+			"я начал писать свой дневник.\n");
+		
 	}
 		
 	public void Q1()
 	{
 		ClearLongAuthorText ();
-
-		ActiveScenarioLayout(true, LayoutUI.Author);
-
-		query = "SELECT * FROM Phrases WHERE id_quest = 1;";
-		cmnd_read.CommandText = query;
-		reader = cmnd_read.ExecuteReader();
-
-		while (reader.Read ())
-			SetLongAuthorText (reader[2].ToString());
-
-		reader.Close ();
+		SetLongAuthorText("Сегодня 24 июня 1456 года.\n\nМое утро начинается как обычно: надо прийти на главную площадь " +
+			"города Gynon и получить очередное задание от Мэлори.");
 
 		setQuestText ("Прийти в город Gynon к Мелори для получения задания.");
 
-		GameObject.FindGameObjectWithTag ("Melory").SetActive (true);
+		meloryDialog1 = true;
 	}
 
 	public void EndMeloryDialog(){
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		EnableFPS ();
-		UI_Player.SetActive (true);
-		UI_Dialog.SetActive (false);
-		GameObject.FindGameObjectWithTag ("Melory").SetActive (false);
-
-
+		DisableDialog_UI ();
 	}
 
 }

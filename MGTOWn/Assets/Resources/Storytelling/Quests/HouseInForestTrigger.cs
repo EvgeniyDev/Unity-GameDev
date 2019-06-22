@@ -13,16 +13,20 @@ class HouseInForestTrigger : Quest1
 		if (flag) {
 			flag = false;
 
-			ClearLongAuthorText ();
+			EnableAuthor_UI ();
 
-			ActiveScenarioLayout(true, LayoutUI.Author);
-			SetLongAuthorText ("Дом");
+			ClearLongAuthorText ();
+			SetLongAuthorText ("Похоже тут кто-то живет, не знал что кроме Gynon`a и деревень тут еще есть дома.\n\n " +
+				"Еще вернусь сюда завтра.");
 		}
+		entered = true;
 	}
 
+	bool entered = false;
 	void Update()
     {
-		if (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape))
-			ActiveScenarioLayout (false, LayoutUI.NULL);
+		if (entered && (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape)))
+			DisableAuthor_UI ();
+		
 	}
 }

@@ -16,6 +16,8 @@ TagManager:
   - Quest
   - Next
   - Rose
+  - AuthorUI
+  - LongText
   layers:
   - Default
   - TransparentFX
