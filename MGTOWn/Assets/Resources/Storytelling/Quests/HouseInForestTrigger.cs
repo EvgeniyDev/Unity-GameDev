@@ -17,8 +17,8 @@ class HouseInForestTrigger : Quest1
 			EnableAuthor_UI ();
 
 			ClearLongAuthorText ();
-			SetLongAuthorText ("Похоже тут кто-то живет, не знал что кроме Gynon`a и деревень тут еще есть дома.\n\n " +
-				"Еще вернусь сюда завтра.");
+			SetLongAuthorText ("Схоже тут хтось живе, не знав що крім Gynon`a і сіл тут ще є будинки. \n\n"+
+  				"Ще повернуся сюди завтра.");
 
             subQuestId = 4;
         }
