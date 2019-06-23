@@ -94,15 +94,18 @@ public class Cheats : MonoBehaviour
             if (!manyHPCheatActivated)
             {
                 playerStats.maxHealth = 100000;
+                playerStats.maxStamina = 150000;
             }
             else
             {
                 playerStats.maxHealth = 100;
+                playerStats.maxStamina = 2000;
             }
 
             manyHPCheatActivated = !manyHPCheatActivated;
 
             playerStats.currentHealth = playerStats.maxHealth;
+            playerStats.currentStamina = playerStats.maxStamina;
 
             manyHPIndex = 0;
         }

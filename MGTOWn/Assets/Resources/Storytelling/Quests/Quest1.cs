@@ -113,7 +113,9 @@ class Quest1 : Quests
 						sayingText.text = "Сразу к делу! Ты должен принести жало пчелы.";
 						return;
 					}
-					if (/*Наличие жала пчелы в инвенте*/true && bee){
+
+					if (bee && inventory.CheckItemInInventory("Hornet sting"))
+                    {
 						bee = false;
 						saying.text = "Вы";
 						sayingText.text = "Я принес Вам жало пчелы.";
@@ -162,7 +164,7 @@ class Quest1 : Quests
                 }
 			}
 		}
-	}
+    }
 
 	public void Vstuplenie()
 	{

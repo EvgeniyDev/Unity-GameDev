@@ -10,6 +10,7 @@ public class Quests : MonoBehaviour
     public static int subQuestId;
 
     public GameObject fps;
+    protected Inventory inventory;
     public GameObject currentQuestMinimapSign;
 
     Text longText;
@@ -122,6 +123,7 @@ public class Quests : MonoBehaviour
 
     public virtual void Start()
     {
+        inventory = GameObject.FindGameObjectWithTag("InventoryHolder").GetComponent<Inventory>();
         UI_Player = fps.transform.GetChild(2).gameObject;
         UI_PauseMenu = fps.transform.GetChild(3).gameObject;
 

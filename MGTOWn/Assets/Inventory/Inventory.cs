@@ -40,7 +40,7 @@ public class Inventory : MonoBehaviour
 
 
 
-        void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
                 if (hit.collider.GetComponent<Item>())
                 {
                     AddItem(hit.collider.GetComponent<Item>());
-					Hint.text = "";
+                    Hint.text = "";
                 }
             }
         }
@@ -168,6 +168,20 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public bool CheckItemInInventory(string itemName)
+    {
+        for (int i = 0; i < cellContainer.transform.childCount; i++)
+        {
+            if (items[i].itemName == itemName)
+            {
+                Debug.Log(true);
+                return true;
+            }
+        }
+
+        Debug.Log(false);
+        return false;
+    }
 
 	//Timer t;
 	//bool stopT;

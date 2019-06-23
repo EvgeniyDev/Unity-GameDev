@@ -5,7 +5,7 @@ class HouseInForestTrigger : Quest1
 {
 	public override void Start()
     {
-		base.Start ();
+		base.Start (); 
     }
 
 	bool flag = true;
@@ -30,6 +30,5 @@ class HouseInForestTrigger : Quest1
     {
 		if (entered && (Input.GetKeyDown (KeyCode.Space) || Input.GetKeyDown (KeyCode.Escape)))
 			DisableAuthor_UI ();
-		
 	}
 }

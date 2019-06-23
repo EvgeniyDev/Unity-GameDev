@@ -7,6 +7,7 @@ public class DeathScript : MonoBehaviour
 {
     public FirstPersonController mainController;
     public PauseMenuScript pauseMenuScript;
+    public PlayerStats playerStats;
 
     //public GameObject playerUI;
     public GameObject deathScreen;
@@ -69,9 +70,21 @@ public class DeathScript : MonoBehaviour
 
     public void Respawn()
     {
-        //Need save&load system to be implemented
+        mainController.gameObject.transform.position = new Vector3(1308.3f, 57f, 608.8f);
 
-        Debug.Log("Respawned");
+        playerStats.currentHealth = playerStats.maxHealth - 1;
+        playerStats.currentStamina = playerStats.maxStamina;
+        fadeInImage.color = Color.clear;
+
+        Time.timeScale = 1f;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        mainController.enabled = true;
+        pauseMenuScript.enabled = true;
+
+        deathScreen.SetActive(false);
     }
 
     public void ToMainMenu()

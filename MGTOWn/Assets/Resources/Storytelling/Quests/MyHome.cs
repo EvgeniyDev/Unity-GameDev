@@ -6,14 +6,16 @@ class MyHome : Quest1
 {
 	void OnTriggerEnter()
     {
-		if (getQuestText () == "Идти домой спать.") {
+		if (getQuestText () == "Идти домой спать.")
+        {
 			EnableAuthor_UI ();
 			ClearLongAuthorText ();
 			SetLongAuthorText ("День 1 закончен.");
 
             CurrentQuestSignDisable();
 		}
-		if (getQuestText () == "Вернуться домой и лечь спать.") {
+		if (getQuestText () == "Вернуться домой и лечь спать.")
+        {
 			EnableAuthor_UI ();
 			ClearLongAuthorText ();
 			SetLongAuthorText ("День 2 закончен.");
