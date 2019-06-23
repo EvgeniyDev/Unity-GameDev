@@ -11,7 +11,7 @@ class HouseInForestTrigger : Quest1
 	bool flag = true;
 	void OnTriggerEnter()
     {
-		if (flag && subQuestId == 3) {
+		if (flag/* && subQuestId == 3*/) {
 			flag = false;
 
 			EnableAuthor_UI ();

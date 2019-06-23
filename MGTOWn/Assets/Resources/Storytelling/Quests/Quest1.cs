@@ -5,8 +5,10 @@ using System;
 
 class Quest1 : Quests
 {
-	protected bool vstup = true, text1 = false, goSleep = false;
-	bool meloryDialog1 = false, meloryDialog2 = false;
+	protected bool vstup = true, text1 = false, bee = false;
+	protected bool mD1 = false, mD2 = false, mD3 = false;
+	protected bool oD1 = false;
+	protected bool osbertCanTalk = false;
     
 	Vector3 rayOrigin;
 	RaycastHit hit;
@@ -80,9 +82,9 @@ class Quest1 : Quests
 					sayingText = GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text>();
 					next = GameObject.FindGameObjectWithTag ("Next").GetComponent<Button>();
 
-					if (subQuestId == 2 && meloryDialog1)
+					if (/*subQuestId == 2 && */mD1)
                     {
-						meloryDialog1 = false;
+						mD1 = false;
 						saying.text = "Mэлори";
 						sayingText.text = "Ты заставил меня ждать!";
 
@@ -93,9 +95,9 @@ class Quest1 : Quests
                         return;
 					}
                     
-					if (subQuestId == 5 && meloryDialog2)
+					if (/*subQuestId == 5 && */mD2)
                     {
-						meloryDialog2 = false;
+						mD2 = false;
 						saying.text = "Mэлори";
 						sayingText.text = "Я надеялась что больше не увижу тебя!";
 
@@ -106,25 +108,60 @@ class Quest1 : Quests
 						return;
 					}
 
-                    if (subQuestId < 5 && !meloryDialog1)
-                    {
-                        saying.text = "Mэлори";
-                        sayingText.text = "Выполняй мои задания, а не шляйся тут!";
-                    }
+					if (getQuestText() == "Встретиться с Мэлори на площаде.") {
+						saying.text = "Mэлори";
+						sayingText.text = "Сразу к делу! Ты должен принести жало пчелы.";
+						return;
+					}
+					if (/*Наличие жала пчелы в инвенте*/true && bee){
+						bee = false;
+						saying.text = "Вы";
+						sayingText.text = "Я принес Вам жало пчелы.";
+						return;
+					}
+
+                    saying.text = "Mэлори";
+                    sayingText.text = "Выполняй мои задания, а не шляйся тут!";
 				}
 
-				if (subQuestId == 4 && hit.collider.CompareTag ("Rose"))
+				if (hit.collider.CompareTag ("Osbert") && osbertCanTalk) {
+					EnableDialog_UI ();
+
+					Cursor.lockState = CursorLockMode.None;
+					Cursor.visible = true;
+					DisableFPS ();
+
+					saying = GameObject.FindGameObjectWithTag ("Saying").GetComponent<Text> ();
+					sayingText = GameObject.FindGameObjectWithTag ("Saying text").GetComponent<Text> ();
+					next = GameObject.FindGameObjectWithTag ("Next").GetComponent<Button> ();
+
+					if (oD1) {
+						oD1 = false;
+						saying.text = "Осберт";
+						sayingText.text = "Здравствуй, заблудший в столь далекие края путник.";
+						return;
+					}
+
+					saying.text = "Осберт";
+					sayingText.text = "Давай встретимся позже!";		
+				}
+
+				if (hit.collider.CompareTag ("Knife"))
+				{
+					bee = true;
+					setQuestText ("Убить пчелу и принести жало Мэлори.");
+				}
+
+				if (/*subQuestId == 4 && */hit.collider.CompareTag ("Rose"))
                 {
 					setQuestText ("Отдать розу Мэлори.");
                     SetCurrentQuestSignPosition(8.6f, 4.9f);
 
-                    meloryDialog2 = true;
+                    mD2 = true;
                     subQuestId = 5;
                 }
 			}
 		}
-
-        Debug.Log(questId + " " + subQuestId);
 	}
 
 	public void Vstuplenie()
@@ -164,10 +201,10 @@ class Quest1 : Quests
 
         SetCurrentQuestSignPosition(8.6f, 4.9f);
 
-        meloryDialog1 = true;
+        mD1 = true;
     }
 
-	public void EndMeloryDialog()
+	public void EndDialog()
     {
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;

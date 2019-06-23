@@ -53,54 +53,6 @@ public class Quests : MonoBehaviour
 		longText.text = "";
 	}
 
-	/*
-    public void ActiveScenarioLayout(bool flag, LayoutUI layoutType = LayoutUI.NULL)
-    {
-        // true - only scenario
-        // false - disable scenario
-        if (flag)
-        {
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-
-            DisablePauseMenu();
-
-            DisableFPS();
-
-            UI_PauseMenu.SetActive(false);
-            UI_Player.SetActive(false);
-            scenarioLayout.SetActive(true);
-
-            if (layoutType == LayoutUI.Author)
-            {
-                UI_Dialog.SetActive(false);
-                UI_Author.SetActive(true);
-            }
-            if (layoutType == LayoutUI.Dialog)
-            {
-                UI_Dialog.SetActive(true);
-                UI_Author.SetActive(false);
-            }
-        }
-        else
-        {
-            Time.timeScale = 1;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-
-            EnableFPS();
-
-            EnablePauseMenu();
-
-            scenarioLayout.SetActive(false);
-            UI_PauseMenu.SetActive(false);
-            UI_Player.SetActive(true);
-            UI_Author.SetActive(false);
-            UI_Dialog.SetActive(false);
-        }
-    }
-    */
 	public void EnableAuthor_UI()
     {
 		Time.timeScale = 0;

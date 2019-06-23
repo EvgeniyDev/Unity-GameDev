@@ -18,6 +18,8 @@ TagManager:
   - Rose
   - AuthorUI
   - LongText
+  - Knife
+  - Osbert
   layers:
   - Default
   - TransparentFX
